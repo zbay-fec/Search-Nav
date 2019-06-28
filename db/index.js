@@ -19,6 +19,7 @@ const con = mysql.createConnection({
   }
 
   const getTodos = function(cb){
+    
       con.query(`select messages.messages from messages`, function(err, results){
           if(err) cb(err);
           cb(null, results);

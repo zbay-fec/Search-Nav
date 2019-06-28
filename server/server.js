@@ -6,24 +6,29 @@ const port = 3000;
 const cors = require('CORS');
 //middleware
 app.use(express.static('dist'));
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 app.use(cors());
 
 
-app.post('/', (req, res) =>{
+app.post('/todos', (req, res) =>{
     // req.body will be from form from client
-    console.log('test'); 
-    db.newTodo({messages:'testing'}, (err, sent) => {
+    console.log('server', req.body); //send as obj still
+    db.newTodo(req.body, (err, sent) => {
         if(err) {
             console.log(err);
         }else{
-            res.send(sent);
+            db.getTodos((err, results) => {
+                if(err) {
+                    console.log(err);
+                }else{
+                    res.send(results);
+                }
+            })
         }
     })
 })
 
 app.get('/todos', (req, res) => {
-
     db.getTodos((err, suc) => {
         if(err){
             console.log(err);
