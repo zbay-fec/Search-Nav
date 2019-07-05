@@ -1,6 +1,6 @@
 import React from 'react';
 import Axios from 'axios';
-import autocomplete from "react-autocomplete";
+
 
 class App extends React.Component{
     constructor(props){
@@ -34,7 +34,7 @@ class App extends React.Component{
     }
 
     componentWillMount(){
-        Axios.get('http://localhost:3000/')
+        Axios.get('http://localhost:3001/items')
         .then(response => {
         this.setState({ items: response.data })
         })
