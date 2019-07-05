@@ -1,4 +1,5 @@
 node_modules
 .DS_Store
 .env.default
-./db/index.js
+dir_to_ignore/.env.default
+dir_to_ignore/db
