@@ -1,5 +1,5 @@
-node_modules
-.DS_Store
-.env.default
-dir_to_ignore/.env.default
-dir_to_ignore/db
+dist/
+node_modules/
+package-lock.json
+.env
+db/
