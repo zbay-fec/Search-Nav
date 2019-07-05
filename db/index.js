@@ -1,29 +1,37 @@
+
 const mysql = require('mysql');
+
 
 const con = mysql.createConnection({
     host: "remotemysql.com",
-    user: "Vwof08H2lK",
-    password: "oScxiVLZNb",
-    database: "Vwof08H2lK"
+    user: "UT7mgfISwy",
+    password: "1l1tfSX5oP",
+    database: "UT7mgfISwy"
   });
+  
   con.connect(function(err) {
     if (err) throw err;
-    console.log("Connected!");
+    console.log("Connected database!");
   });
 
-  const newTodo = function(todo, cb){
-    con.query(`insert into messages (messages) values ('${todo.messages}')`, function(err, results){
+//going to get names for each item.
+//going to move all names to react array in order to filter for autofilling functionality
+  const findAllNames = (cb) => {
+    console.log('oi');
+                            //placeholder //put in .escape(user) format instead of ${}
+    con.query(`Select items.name from items`, (err, results) => {
+        if(err) cb(err);
+        cb(null, results);
+    }) 
+  }
+
+  const getSpecificName = (user, cb) => {
+                            //placeholder
+    con.query(`select * from items where items.name='${user.username}' `, (err, results) => {
         if(err) cb(err);
         cb(null, results);
     })
   }
 
-  const getTodos = function(cb){
-    
-      con.query(`select messages.messages from messages`, function(err, results){
-          if(err) cb(err);
-          cb(null, results);
-      })
-  }
 
-module.exports = { newTodo, getTodos };
+module.exports = { findAllNames, getSpecificName };

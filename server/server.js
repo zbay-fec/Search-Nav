@@ -1,43 +1,28 @@
 const express = require('express');
-const app = express();
-const bodyParser = require('body-parser');
 const db = require('../db');
-const port = 3000;
-const cors = require('CORS');
-//middleware
-app.use(express.static('dist'));
-app.use(bodyParser.json());
+const path = require('path');
+const cors = require('cors');
+const app = express();
+
+app.use('/static', express.static(path.join(__dirname, 'dist')));
+app.use(express.json());
 app.use(cors());
 
-
-app.post('/todos', (req, res) =>{
-    // req.body will be from form from client
-    console.log('server', req.body); //send as obj still
-    db.newTodo(req.body, (err, sent) => {
-        if(err) {
-            console.log(err);
-        }else{
-            db.getTodos((err, results) => {
-                if(err) {
-                    console.log(err);
-                }else{
-                    res.send(results);
-                }
-            })
-        }
+app.get('/', (req, res) => {
+    //then query on change of the input box
+    db.findAllNames((err, suc) => {
+        if(err) console.log(err);
+        res.send(suc);
     })
 })
 
-app.get('/todos', (req, res) => {
-    db.getTodos((err, suc) => {
-        if(err){
-            console.log(err);
-        }else{
-            console.log(suc);
-            res.send(suc);
-        }
+app.post('/', (req, res) => {
+    //posting when clicking the item in the autofilling recommended
+    db.getSpecificName({username: req.body.name}, (err, results) => {
+        if(err) console.log('ERRRRR', err);
+        res.send(results);
     })
 })
 
 
-app.listen(port, () => console.log(`shenanigans have started on aisle ${port}`));
+app.listen(3000, ()=> console.log(`shenanigans have started on aisle 3000`));

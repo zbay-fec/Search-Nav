@@ -1,53 +1,58 @@
 import React from 'react';
-import Axios from "axios";
-import List from './List';
+import Axios from 'axios';
+import autocomplete from "react-autocomplete";
 
-
-class App extends React.Component {
+class App extends React.Component{
     constructor(props){
         super(props);
-        this.state = {
-            todos: []
+        this.state ={
+            input: '', //current state of search bar
+            items: [], //names of items 
+            item: {} //specific item that needs to be rendered
         }
-        this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
-    handleChange(event){
-        //set to const bc its asynchronous
-        const update = event.target.value;
-        this.setState({userInput: update})
+
+    handleChange(e){
+        console.log(e.currentTarget.value);
+        e.preventDefault();
+        //need to compare realtime keystrokes to filter thru names
+        const names = this.state.items.map((item) => item.name);
+        console.log("Names", names);
+        names.filter((name) => {
+            if(name.includes(e.currentTarget.value)){
+                console.log("name", name);
+            }
+        })
+        this.setState({ input: e.currentTarget.value });
     }
-    handleSubmit(){
-        Axios.post('http://localhost:3000/todos', {messages: this.state.userInput})
-        .then(results => this.setState({todos: results.data}))
-        .catch((err) => console.log('app', err));
+
+    handleSubmit(e){
+        
+        //when ill render the page to the item thats clicked, or the exact item
     }
-    componentDidMount(){
-        let curTodos = this.state.todos;
-        Axios.get('http://localhost:3000/todos')
-        .then((todos) => { console.log(todos.data)
-        curTodos.push(todos.data)
-        this.setState({
-            todos: todos.data
-        })})
-        .catch((err) => console.log(err));
+
+    componentWillMount(){
+        Axios.get('http://localhost:3000/')
+        .then(response => {
+        this.setState({ items: response.data })
+        })
+        .catch(err => console.log('ERR', err));
     }
-    
-    render (){
-        console.log(this.state.todos);
-        return (
+
+    render(){
+        return(
             <div>
-                <h1>ToDo</h1>
-                <input onChange={this.handleChange} type='text' placeholder='new todos here'/>
-                <input type='Submit' onClick={this.handleSubmit}/>
-                {this.state.todos.length !== 0 ? this.state.todos.map((user, i) => <List msg={user} key={i}/>) : null}
-                {/* <response handleResponse={this.handleResponse}/> -implement handleResponse and bind in constructor*/ } 
+                <h1>oiii</h1>
+                <p>{this.state.input}</p>
+                <form>
+                    <input type="text" onChange={this.handleChange}></input>
+                    <button Submit={this.handleSubmit}>click me</button>
+                </form>
             </div>
         )
     }
 }
 
 export default App;
-
-//Warning: Each child in a list should have a unique "key" prop. --> think has to do with the fact that there are no unique ids for the messages, such as a 
-//fixed - must set a unique id for each object bc there is no other unique id currently in the db.
