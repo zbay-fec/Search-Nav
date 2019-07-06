@@ -3,8 +3,7 @@
 // import App from './App';
 
 // ReactDOM.render(< App /> , document.getElementById('root'));
+import Search from './App';
+// import App from '@material-ui/core/App';
 
-
-import App from './App';
-
-window.Search = App;
+window.Search = Search;

@@ -2,21 +2,33 @@ const express = require('express');
 const db = require('../db');
 const path = require('path');
 const cors = require('cors');
+const parser = require('body-parser');
 const app = express();
 
 app.use(express.static(path.join(__dirname, '../dist')));
 app.use(express.json());
 app.use(cors());
+app.use(parser());
 
 app.get('/items', (req, res) => {
     //then query on change of the input box
     db.findAllNames((err, suc) => {
         if(err) console.log(err);
-        res.send(suc);
+        console.log(suc, "SERVER");
+        // const data = suc.map((val) => {
+        //     val.name.toLowerCase();
+        // })
+        const results = [];
+        for(let i=0; i<suc.length; i++){
+            results.push(suc[i].name.toLowerCase());
+        }
+        console.log(results , "should be lower case");
+        res.send(results);
     })
 })
 
-app.post('/', (req, res) => {
+app.post('/find', (req, res) => {
+    console.log(req.body)
     //posting when clicking the item in the autofilling recommended
     db.getSpecificName({username: req.body.name}, (err, results) => {
         if(err) console.log('ERRRRR', err);
