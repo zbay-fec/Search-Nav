@@ -2,3 +2,4 @@ node_modules/
 package-lock.json
 .env.default
 db/index.js
+.env
