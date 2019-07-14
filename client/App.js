@@ -69,11 +69,15 @@ class Search extends React.Component{
         }
     }
 
+  
+
     render(){
         return(
             <div>
  
                 {console.log(this.state.input)}
+
+                
                 {/* <nav className="white" role="navigation">
                 
                     <div className="nav-wrapper container row">
@@ -97,46 +101,71 @@ class Search extends React.Component{
                         <a href="#" data-target="nav-mobile" className="sidenav-trigger"><i class="material-icons">menu</i></a>
                     </div>
                 </nav> */}
+                
                 <div className="w3-white">
-                <img src="../Zbay.png"></img>
+                    
+                        <img src="../Zbay.png"></img>
+                   
                 <div className="w3-dropdown-hover">
-                    <button className="w3-button">Shop by category</button>
+                    <button className="w3-button">Shop by       category</button>
                     <div className="w3-dropdown-content">
-                    <table>
-                        <tr>
-                            <th>Collectibles and art</th>
+                    <table classname="drop">
+                        <tr> 
+                            <th>Collectibles and art</th> 
                             <th>Fashion</th>
+                            <th>Sporting goods</th>
                         </tr>
-
-                        <tr>
+                        <tr> 
                             <td>Collectibles</td>
-
                         </tr>
                         <tr>
                             <td>Coins & paper money Antiques</td>
-                        
                         </tr>
-
                         <tr>
                             <td>Sports memorabillia</td>
-
+                        </tr>
+                        <tr>
+                        <th rowspan="2">Electronics</th>
                         </tr>
                     </table>
                     </div>
                 </div>
                 
+                <input className="Searchbar" type="text" placeholder="Search for anything" onChange={this.handleChange}></input>
                 
-                <input type="text" className="w3-bar-item w3-button" placeholder="Search for anything" onChange={this.handleChange}></input>
-                 <button className="w3-bar-item w3-button w3-blue" onClick={this.handleSubmit}>Search</button>
-                
+                 <button className="Search" onClick={this.handleSubmit} onMouseEnter={this.enter}>Search</button>
+                 <div className="showcontent">
+                    {/* <table>
+                        <tr>
+                            oi
+                        </tr>
+                    </table> */}
+                 </div>
+                 
                 </div>
-                
-
                 {/* <form class="form-inline md-form form-sm mt-0">
                 <i class="fas fa-search" aria-hidden="true"></i>
                 <input Style="padding:0 0 0 20px" class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search"
                     aria-label="Search" onChange={this.handleChange}/>
                 </form> */}
+                <hr></hr>
+                <div className="table2">
+                    <table className="nav">
+                        <tr>
+                            <a href="#">Home</a>
+                            <td>Saved</td>
+                            <td>Motors</td>
+                            <td>Fashion</td>
+                            <td>Electronics</td>
+                            <td>Collectibles & Art</td>
+                            <td>Home & Garden</td>
+                            <td>Sporting Goods</td>
+                            <td>Toys</td>
+                            <td>Business & industrial</td>
+
+                        </tr>
+                    </table>
+                </div>
 
                 
                 {(this.state.Autofilling.length !== 0) ? 
