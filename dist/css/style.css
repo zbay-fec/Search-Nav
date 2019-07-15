@@ -188,21 +188,25 @@
 }
 
 #alert {
-  background-position: -37px -101px !important;
   width: 16px;
   height: 18px;
   display: block;
   overflow: hidden;
   text-indent: -9999px;
   font-size: 0;
-  background-size: 250px 200px;
-  background-image: url(https://ir.ebaystatic.com/rs/v/fxxj3ttftm5ltcqnto1o4baovyl.png);
   background-repeat: no-repeat;
+  background-size: 20% 110%;
+  background-image: url("/alert.png");
+  bottom: 3px;
   cursor: pointer;
   color: #333 !important;
   list-style: none;
   white-space: nowrap;
 }
+
+
+
+
 
 
 
@@ -499,9 +503,7 @@ li {
   font-size: 14px;
   color: #333;
   text-align: left;
-  display: flex;
-  justify-content: center;
- 
+  position: absolute;
   left: 397px;
   bottom: 600px;
   z-index: 2;

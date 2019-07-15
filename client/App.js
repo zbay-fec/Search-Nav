@@ -108,6 +108,7 @@ class Search extends React.Component{
                                 <i id="alert">oi</i>
                             </button>
                         </li>
+                        
                     </ul>
                 </div>
                 <div className="Search-component">
