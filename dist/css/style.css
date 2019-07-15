@@ -38,8 +38,6 @@
   display: block;
 }
 
-
-
 .dropdown:hover .dropdown-content {display: block; }
 
 
@@ -132,6 +130,7 @@ table, th, .drop td {
   text-align: center;
 }
 
+/* .Search -> search button  */
 .Search {
   background-color: #047BD5;
   color: white;
@@ -148,8 +147,17 @@ table, th, .drop td {
 .Searchbar{
   width: 30%;
   padding: 5px 10px 5px 10px;
-  border-radius: 2px;
+  border-radius: 3px;
+
 }
+
+.Searchbar:focus {
+  outline: 0;
+  border-color: #66b1ee;
+  box-shadow: (0 0 2px rgba(85, 168, 236, .9));
+
+}
+
 
 /* .showcontent {
   display: none;
@@ -160,12 +168,11 @@ table, th, .drop td {
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   border: 2px solid rgb(85, 85, 85);
   z-index: 1;
-} */
+} */ 
 
 .Searchbar:focus {   /* make dropdown for autofill here */
-  border: 2px solid rgb(85, 85, 85);
+  border: 1px solid rgb(85, 85, 85);
 }
-
 
 /* .Searchbar:hover .showcontent {
   display: block;
@@ -204,6 +211,18 @@ hr {
   text-align: center;
 }
 
+
+select {
+  font-size: 16px;
+  color: white;
+  display: block;
+  line-height: 60px;
+  padding: 0 26px;
+  text-decoration: none;
+  border-left: 1px solid #2e2e2e;
+  font-family: Montserrat, sans-serif;
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+}
 
 
 
