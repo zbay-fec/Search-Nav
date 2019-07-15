@@ -3,12 +3,12 @@ import React from 'react'
 
 const Table2 = () => {
     return(
-        <div>
+        <div className="T2">
                <hr></hr>
                 <div className="table2">
                     <table className="nav">
                         <tr>
-                            <a href="#">Home</a>
+                            <td>Home</td>
                             <td>Saved</td>
                             <td>Motors</td>
                             <td>Fashion</td>

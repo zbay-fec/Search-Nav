@@ -96,13 +96,29 @@ class Search extends React.Component{
                             <span className="span-help">Help & Contact</span>
                         </li>
                     </ul>
+                    <ul id="right-top">
+                        <li className="sell">
+                            <span className="span-sell">sell</span>
+                        </li>
+                        <li className="my-ebay">
+                            <span className="span-My">My eBay</span>
+                        </li>
+                        <li className="notifications">
+                            <button className="bell-icon">
+                                <i id="alert">oi</i>
+                            </button>
+                        </li>
+                    </ul>
                 </div>
                 <div className="Search-component">
                 <div className="w3-white">
                     <img src="../Zbay.png"></img>
                    
                 <div className="w3-dropdown-hover">
-                    <button className="w3-button">Shop by category</button>
+                    <button className="category-dropdown" aria-expanded="false">Shop by <p rowspan="2">category</p>
+                        
+                    </button>
+                    <i id="arrow-dropdown"></i>
                     <div className="w3-dropdown-content">
                     <table classname="drop">
                         <tr> 

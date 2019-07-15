@@ -8,6 +8,7 @@
 
  body {
    background-color: #f5f5f5;
+   text-align: center;
  }
 
  .top-bar {
@@ -107,10 +108,154 @@
   font-size: 12px;
 }
 
+#right-top {
+  position: absolute;
+  top: 1px;
+  right: 0;
+  z-index: 99999;
+  margin: 0;
+  padding: 0;
+  list-style: none outside none;
+    list-style-position: outside;
+    list-style-image: none;
+    list-style-type: none;
+  font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Sans-serif !important;
+  white-space: nowrap;
+  line-height: 1;
+  font-size: 14px;
+  color: #333;
+  text-align: left;
+}
+
+.sell {
+  list-style: none;
+  display: inline-block;
+  border-right: 1px #c7c7c7 solid;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+  padding: 2px 3px 0 3px;
+  margin: 0 -1px;
+  font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Sans-serif !important;
+  line-height: 1;
+  font-size: 14px;
+  color: #333;
+}
+
+.my-ebay {
+  list-style: none;
+    list-style-position: outside;
+    list-style-image: none;
+    list-style-type: none;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  white-space: nowrap;
+  margin: 0 3px;
+  padding: 0;
+  line-height: 1;
+  font-size: 14px;
+  color: #333;
+  text-align: left;
+
+}
+.notifications {
+  position: relative;
+  display: inline;
+  list-style: none;
+  white-space: nowrap;
+  line-height: 1;
+  font-size: 14px;
+  color: #333;
+  text-align: left;
+}
+
+.bell-icon {
+  width: 52px;
+  padding: 2px 17px 3px;
+  vertical-align: top;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 12px;
+  color: #333 !important;
+  display: inline-block;
+  border: 1px solid transparent;
+  position: relative;
+  border-width: 2px 1px 0;
+  text-decoration: none !important;
+  list-style: none;
+  white-space: nowrap;
+}
+
+#alert {
+  background-position: -37px -101px !important;
+  width: 16px;
+  height: 18px;
+  display: block;
+  overflow: hidden;
+  text-indent: -9999px;
+  font-size: 0;
+  background-size: 250px 200px;
+  background-image: url(https://ir.ebaystatic.com/rs/v/fxxj3ttftm5ltcqnto1o4baovyl.png);
+  background-repeat: no-repeat;
+  cursor: pointer;
+  color: #333 !important;
+  list-style: none;
+  white-space: nowrap;
+}
 
 
 
 
+.category-dropdown {
+  padding-left: 3px;
+  padding-right: 0;
+  height: 40px;
+  text-align: left;
+  width: 100%;
+  font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Sans-serif !important;
+  position: relative;
+  top: 14px;
+  display: block;
+  color: #555;
+  border: 1px solid transparent;
+  border-width: 2px 1px 0;
+  text-decoration: none;
+  white-space: normal;
+  padding: 6px 5px 5px 8px;
+  font-size: 14px;
+  line-height: 12px;
+  word-break: normal;
+  background-color: transparent;
+  cursor: pointer;
+  font: inherit;
+  margin: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+#arrow-dropdown {
+
+  padding: 0 0 0 80px;
+  height: 7px;
+  margin-left: 75px;
+  position: relative;
+  top: 4px;
+  width: 4px;
+  background-image: url('/arrow.png');
+  background-repeat: no-repeat;
+  background-size: 20% 50%;
+  text-align: left;
+  color: #555;
+  font-size: 14px;
+  box-sizing: inherit;
+  word-break: normal;
+  cursor: pointer;
+  line-height: 0.5;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Sans-serif !important;
+}
 
 .dropbtn {
   background-color: #4CAF50;
@@ -144,7 +289,7 @@
   display: block;
 }
 
-.dropdown:hover .dropdown-content {display: block; }
+.dropdown:focus .dropdown-content {display: block; }
 
 
 
@@ -277,7 +422,7 @@ table, th, .drop td {
   color: #333;
   transition: border-color .1s linear;
     transition-property: border-color;
-    transition-duration: 0.1s;
+    transition-duration: 0.6s;
     transition-timing-function: linear;
     transition-delay: 0s;
 }
@@ -354,10 +499,12 @@ li {
   font-size: 14px;
   color: #333;
   text-align: left;
-  position: absolute;
+  display: flex;
+  justify-content: center;
+ 
   left: 397px;
   bottom: 600px;
-  z-index: 99999;
+  z-index: 2;
   background-color: white;
   border: 1px solid #aaa !important;
   -moz-box-shadow: 2px 2px 5px rgba(43, 5, 5, 0.2);
@@ -399,31 +546,50 @@ hr {
   border-style: inset;
   border-width: 1/2px;
   color: grey;
+  
  
 }
-
 .nav {
+  display: flex;
+  justify-content: center;
+}
+.nav tr{
   padding: 0px 70px 0px 70px;
+  
 }
 
 .nav a{
   color: black;
   padding: 0px 20px;
   font-size: 12px;
+
 }
 
 .nav td{
-  color: black;
+  color: #555;
   padding: 0px 20px;
   font-size: 12px;
+
 }
 
-.table2 .nav{
-  text-align: center;
-}
 .table2 {
-  position: fixed;
+  position: relative;
+  border-bottom: solid 2px #555;
+    border-bottom-color: rgb(85, 85, 85);
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+  color: #333;
+  font-weight: bold;
+  padding-bottom: 7px;
+  line-height: 16px;
+  white-space: nowrap;
+  font-size: 12px;
+  text-align: center;
+  font-family: "Market Sans", Arial, sans-serif;
+  white-space: nowrap;
 }
+
+
 
 
 
