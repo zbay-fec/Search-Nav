@@ -1,6 +1,6 @@
 import React from 'react';
 import Axios from 'axios';
-import DropDown from './dropDown';
+import Table2 from './table2';
 
 
 //when you enter instead of clicking on an  Autofilling from the drop down menu
@@ -12,10 +12,11 @@ class Search extends React.Component{
             input: '', //current state of search bar
             items: [], //names of items 
             Autofilling: [], //items that will be render below the search bar
-            showMenu: true //maybe new component to control the menu sropdown 
+            selected: []
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSelection = this.handleSelection.bind(this);
     }
 
     handleChange(e){
@@ -23,30 +24,36 @@ class Search extends React.Component{
         //need to compare realtime keystrokes to filter thru names
         // const names = this.state.items.map(  Autofilling) =>  Autofilling.name);
         const names = this.state.items; //taking names that are in the state currently
-        let autoFill = [];
-        let searching = [];
-        names.filter((name) => { //only works when the word after the initial word is directly after in the Autofilling name
-            if(name.includes(e.currentTarget.value.toLowerCase())){ //try to compare by each word, and if it isnt included then drop it 
-
-                if(e.currentTarget.value.length !== 0){
-                    
-                    autoFill.push(name);
-                    //************************************************* */check to see which. Autofilling has more in common with the input
-                    this.setState({ 
-                        input: e.currentTarget.value,
-                        Autofilling: autoFill 
-                    });
-                }else{
-                    this.setState({ Autofilling: [] })                                                                 
-                }
-            }
-        })
+        const autoFill = [];
+            names.forEach(itemName => {
+                if(itemName.includes(e.currentTarget.value.toLowerCase())){ //try to compare by each word, and if it isnt included then drop it 
+                    if(e.currentTarget.value.length !== 0){
+                        autoFill.push(itemName); 
+                        
+                        this.setState({ 
+                            input: e.currentTarget.value,
+                            Autofilling: autoFill 
+                        });
+                    }else{
+                        this.setState({ Autofilling: [] })                                                                 
+                    }
+                }         
+            });
     }
 
     handleSubmit(){
-        console.log(this.state.input);
-        Axios.post('http://localhost:3001/find', { name: this.state.Autofilling[0]}) //going to use the first arr in the autocorrection
+        let target; //going to be what is dispatched to the window
+        if(this.state.selected.length !== 0){
+            target = this.state.selected[0];
+        }else{
+            target = this.state.Autofilling[0];
+        }
+
+        
+        Axios.post('http://localhost:3001/find', { name: target}) //going to use the first arr in the autocorrection
         .then(response => {
+            console.log(response.data[0].productID);
+            this.setState({ selected: [] }); //reset to empty array after searching for the selected item
             window.dispatchEvent(new CustomEvent('productChanged', {
                 detail: {
                   id: response.data[0].productID
@@ -63,91 +70,117 @@ class Search extends React.Component{
         .catch(err => console.log('ERR', err));
     }
 
-    filterThruAutoFill(){
-        if(AutoFilling.length > 0){
-            console.log("filter thru more with input");
-        }
+    handleSelection(e){
+        this.state.selected.push(e.currentTarget.innerHTML);
+        this.setState({ selected: e.currentTarget.innerHTML });
+        this.handleSubmit();
     }
+
+  
 
     render(){
         return(
             <div>
- 
-                {console.log(this.state.input)}
-                {/* <nav className="white" role="navigation">
-                
-                    <div className="nav-wrapper container row">
-                    <div className="col s2"><img src="../Zbay.png"></img></div>
-                    <div className="col s3"><input type= "text" placeholder="Search" onChange={this.handleChange}></input></div>
-                    <div><button onClick={this.handleSubmit}>Go</button></div> */}
-
-            
-                    {/* <div className="col s1"><button class="btn waves-effect waves-light" type="submit"  name="action">Submit
-                        <i class="material-icons right">send</i>
-                    </button></div> */}
-        
-                    {/* <div className="col s1"></div>
-                        <ul className="left hide-on-med-and-down">
-                        <li><a href="#">Navbar Link</a></li>
-                        </ul>
-                
-                        <ul id="nav-mobile" className="sidenav">
-                        <li><a href="#">Navbar Link</a></li>
-                        </ul>
-                        <a href="#" data-target="nav-mobile" className="sidenav-trigger"><i class="material-icons">menu</i></a>
-                    </div>
-                </nav> */}
+                <div className="top-bar">
+                    <ul className="top">
+                        <li className="user">
+                            <span className="span-user">Hi <b>User</b> (<a className="signin" href='#' >Sign in</a>) </span>
+                        </li>
+                        <li className="Daily-Deals">
+                            <span className="span-dailydeals">Daily Deals</span>
+                        </li>
+                        <li className="Gift-Cards">
+                            <span className="span-giftcards">Gift Cards</span>
+                        </li>
+                        <li className="Help-Contact">
+                            <span className="span-help">Help & Contact</span>
+                        </li>
+                    </ul>
+                    <ul id="right-top">
+                        <li className="sell">
+                            <span className="span-sell">sell</span>
+                        </li>
+                        <li className="my-ebay">
+                            <span className="span-My">My eBay</span>
+                        </li>
+                        <li className="notifications">
+                            <button className="bell-icon">
+                                <i id="alert">oi</i>
+                            </button>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <div className="Search-component">
                 <div className="w3-white">
-                <img src="../Zbay.png"></img>
+                    <img src="../Zbay.png"></img>
+                   
                 <div className="w3-dropdown-hover">
-                    <button className="w3-button">Shop by category</button>
+                    <button className="category-dropdown" aria-expanded="false">Shop by <p rowspan="2">category</p>
+                        
+                    </button>
+                    <i id="arrow-dropdown"></i>
                     <div className="w3-dropdown-content">
-                    <table>
-                        <tr>
-                            <th>Collectibles and art</th>
+                    <table classname="drop">
+                        <tr> 
+                            <th>Collectibles and art</th> 
                             <th>Fashion</th>
+                            <th>Sporting goods</th>
                         </tr>
-
-                        <tr>
+                        <tr> 
                             <td>Collectibles</td>
-
                         </tr>
                         <tr>
                             <td>Coins & paper money Antiques</td>
-                        
                         </tr>
-
                         <tr>
                             <td>Sports memorabillia</td>
-
+                        </tr>
+                        <tr>
+                        <th rowspan="2">Electronics</th>
                         </tr>
                     </table>
                     </div>
                 </div>
                 
+                <input className="Searchbar" type="text" placeholder="Search for anything" onChange={this.handleChange}></input>
                 
-                <input type="text" className="w3-bar-item w3-button" placeholder="Search for anything" onChange={this.handleChange}></input>
-                 <button className="w3-bar-item w3-button w3-blue" onClick={this.handleSubmit}>Search</button>
-                
-                </div>
-                
+                 <button className="Search" onClick={this.handleSubmit}>Search</button>
+                 <div className="showcontent">
+                 </div>
 
-                {/* <form class="form-inline md-form form-sm mt-0">
-                <i class="fas fa-search" aria-hidden="true"></i>
-                <input Style="padding:0 0 0 20px" class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search"
-                    aria-label="Search" onChange={this.handleChange}/>
-                </form> */}
-
-                
-                {(this.state.Autofilling.length !== 0) ? 
-                <div>
-                <p>{this.state.Autofilling[0]}</p>
-                <p>{this.state.Autofilling[1]}</p>
-                <p>{this.state.Autofilling[2]}</p>
-                <p>{this.state.Autofilling[3]}</p>
-                </div>
+                 {(this.state.Autofilling.length !== 0) ?
+                <table className="autofill-table">
+                    <div id="autofill-column">
+                    <tr>    
+                    <td className="autofill-items"> 
+                        <ul className="ui-autocomplete" tabindex="-1">                                                                                                                                 
+                            <li id="menu-item"> 
+                                <a onClick={this.handleSelection}>{this.state.Autofilling[0]}</a>
+                            </li>
+                            <li id="menu-item"> 
+                                <a onClick={this.handleSelection}>{this.state.Autofilling[1]}</a>
+                            </li>
+                            <li id="menu-item"> 
+                                <a onClick={this.handleSelection}>{this.state.Autofilling[2]}</a>
+                            </li>
+                            <li id="menu-item"> 
+                                <a onClick={this.handleSelection}>{this.state.Autofilling[3]}</a>
+                            </li>
+                        </ul>
+                        </td>
+                    </tr>
+                    </div>
+                </table>
                 : null
                 }
+                 {<Table2 />}
+                 
+                </div>
+            </div>
+                
+
+                
             </div>
         )
     }
