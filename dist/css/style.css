@@ -6,6 +6,9 @@
  * Made By MaterializeCSS.com
  */
 
+ body {
+   background-color: #f5f5f5;
+ }
 .dropbtn {
   background-color: #4CAF50;
   color: white;
@@ -132,15 +135,29 @@ table, th, .drop td {
 
 /* .Search -> search button  */
 .Search {
-  background-color: #047BD5;
-  color: white;
-  padding: 8px 14px 8px 14px;
-  border: none;
+  color: #fff;
+  display: inline-block;
+  vertical-align: baseline;
+  cursor: pointer;
   text-align: center;
-  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  text-shadow: 0 1px 0 rgba(12, 2, 2, 0.2);
+  border-radius: 3px;
+  background: -moz-linear-gradient(top,#0079bc,#00509d);
+  margin: 0 0 0 5px;
+  -webkit-appearance: none;
+  box-shadow: none;
+  font-size: 16px;
+  height: 40px;
+  padding-bottom: .57em;
+  border: 0;
+  white-space: nowrap;
+  font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Sans-serif !important;
+  padding: .5em 1.2em;
 }
 .Search:hover {
-  background-color: #002E6E;
+  background: -moz-linear-gradient(top,#00509d,#0079bc);
 }
 
 
@@ -148,16 +165,7 @@ table, th, .drop td {
   width: 30%;
   padding: 5px 10px 5px 10px;
   border-radius: 3px;
-
 }
-
-.Searchbar:focus {
-  outline: 0;
-  border-color: #66b1ee;
-  box-shadow: (0 0 2px rgba(85, 168, 236, .9));
-
-}
-
 
 /* .showcontent {
   display: none;
@@ -169,6 +177,94 @@ table, th, .drop td {
   border: 2px solid rgb(85, 85, 85);
   z-index: 1;
 } */ 
+li {
+  color: black;
+}
+.ui-complete {
+  cursor: default;
+  background: #fff;
+  border: 1px solid #aaa !important;
+  -moz-box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+  -moz-border-radius: 3px 0 3px 3px;
+  -webkit-border-radius: 3px 0 3px 3px;
+  border-radius: 3px 0 3px 3px;
+  width: 400px;
+  z-index: 9999;
+  opacity: 1;
+  width: 508.117px;
+  top: -3.86667px;
+  left: 40px;
+  display: block;
+  list-style: none;
+  display: block;
+  outline: 0;
+  padding: 2px;
+  margin-left: -10px;
+  position: absolute;
+  top: -12px !important;
+  left: 3px !important;
+  cursor: default;
+  white-space: nowrap;
+  line-height: 1;
+  font-size: 14px;
+  color: #333;
+  text-align: left;
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 508.117px; 
+  top: -3.86667px; 
+  left: 3px; 
+  display: block;
+}
+#autofill-column {
+  position: relative;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Sans-serif !important;
+  line-height: 1;
+  font-size: 14px;
+  color: #333;
+  text-align: left;
+
+}
+
+.autofill-table {
+  width: 50%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Sans-serif !important;
+  white-space: nowrap;
+  line-height: 1;
+  font-size: 14px;
+  color: #333;
+  text-align: left;
+  position: relative;
+  left: 443px;
+  bottom: 120px;
+  z-index: 1;
+  background-color: white;
+  border: 1px solid #aaa !important;
+  -moz-box-shadow: 2px 2px 5px rgba(43, 5, 5, 0.2);
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+#menu-item {
+  font: 16px "Helvetica Neue",Helvetica,Arial,Verdana,Sans-serif;
+  margin: 0;
+  color: #333;
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  text-align: left;
+  white-space: nowrap;
+  border-collapse: collapse;
+  position: relative;
+  right: 30px;
+  border-spacing: 0;
+  cursor: default;
+
+}
 
 .Searchbar:focus {   /* make dropdown for autofill here */
   border: 1px solid rgb(85, 85, 85);

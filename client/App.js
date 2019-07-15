@@ -138,14 +138,28 @@ class Search extends React.Component{
 
                 
                 {(this.state.Autofilling.length !== 0) ?
-                <div className > 
-                <div className="select">                                                                                                                                                                                     
-                <div onClick={this.handleSelection}>{this.state.Autofilling[0]}</div>
-                <div onClick={this.handleSelection}>{this.state.Autofilling[1]}</div>
-                <div onClick={this.handleSelection}>{this.state.Autofilling[2]}</div>
-                <div onClick={this.handleSelection}>{this.state.Autofilling[3]}</div>
-                </div>
-                </div>
+                <table className="autofill-table">
+                    <div id="autofill-column">
+                    <tr>    
+                    <td className="autofill-items"> 
+                        <ul className="ui-autocomplete" tabindex="-1">                                                                                                                                 
+                            <li id="menu-item"> 
+                                <a onClick={this.handleSelection}>{this.state.Autofilling[0]}</a>
+                            </li>
+                            <li id="menu-item"> 
+                                <a onClick={this.handleSelection}>{this.state.Autofilling[1]}</a>
+                            </li>
+                            <li id="menu-item"> 
+                                <a onClick={this.handleSelection}>{this.state.Autofilling[2]}</a>
+                            </li>
+                            <li id="menu-item"> 
+                                <a onClick={this.handleSelection}>{this.state.Autofilling[3]}</a>
+                            </li>
+                        </ul>
+                        </td>
+                    </tr>
+                    </div>
+                </table>
                 : null
                 }
             </div>
