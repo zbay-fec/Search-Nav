@@ -1,5 +1,6 @@
 import React from 'react';
 import Axios from 'axios';
+import Table2 from './table2';
 
 
 //when you enter instead of clicking on an  Autofilling from the drop down menu
@@ -80,7 +81,23 @@ class Search extends React.Component{
     render(){
         return(
             <div>
-                
+                <div className="top-bar">
+                    <ul className="top">
+                        <li className="user">
+                            <span className="span-user">Hi <b>User</b> (<a className="signin" href='#' >Sign in</a>) </span>
+                        </li>
+                        <li className="Daily-Deals">
+                            <span className="span-dailydeals">Daily Deals</span>
+                        </li>
+                        <li className="Gift-Cards">
+                            <span className="span-giftcards">Gift Cards</span>
+                        </li>
+                        <li className="Help-Contact">
+                            <span className="span-help">Help & Contact</span>
+                        </li>
+                    </ul>
+                </div>
+                <div className="Search-component">
                 <div className="w3-white">
                     <img src="../Zbay.png"></img>
                    
@@ -114,30 +131,8 @@ class Search extends React.Component{
                  <button className="Search" onClick={this.handleSubmit}>Search</button>
                  <div className="showcontent">
                  </div>
-                 
-                </div>
-                
-                <hr></hr>
-                <div className="table2">
-                    <table className="nav">
-                        <tr>
-                            <a href="#">Home</a>
-                            <td>Saved</td>
-                            <td>Motors</td>
-                            <td>Fashion</td>
-                            <td>Electronics</td>
-                            <td>Collectibles & Art</td>
-                            <td>Home & Garden</td>
-                            <td>Sporting Goods</td>
-                            <td>Toys</td>
-                            <td>Business & industrial</td>
 
-                        </tr>
-                    </table>
-                </div>
-
-                
-                {(this.state.Autofilling.length !== 0) ?
+                 {(this.state.Autofilling.length !== 0) ?
                 <table className="autofill-table">
                     <div id="autofill-column">
                     <tr>    
@@ -162,6 +157,13 @@ class Search extends React.Component{
                 </table>
                 : null
                 }
+                 {<Table2 />}
+                 
+                </div>
+            </div>
+                
+
+                
             </div>
         )
     }

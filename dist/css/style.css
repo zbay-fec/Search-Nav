@@ -9,6 +9,109 @@
  body {
    background-color: #f5f5f5;
  }
+
+ .top-bar {
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  box-sizing: initial;
+  display: block;
+  font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Sans-serif !important;
+  white-space: nowrap;
+  line-height: 1;
+  font-size: 14px;
+  color: #333;
+  text-align: left;
+}
+
+.top {
+  margin-top: 1px;
+  text-align: left;
+  margin: 0;
+  margin-top: 0px;
+  padding: 0;
+  list-style: none outside none;
+  font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Sans-serif !important;
+  white-space: nowrap;
+  line-height: 1;
+  font-size: 14px;
+  color: #333;
+}
+
+.user {
+  list-style: none;
+  background: 0;
+  padding: 0;
+  display: inline-block;
+  font-size: 12px;
+  text-align: left;
+  font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Sans-serif !important;
+  line-height: 1;
+  right: 5px;
+}
+
+.signin {
+  color: #0654ba;
+  cursor: pointer;
+  font-size: 12px;
+  white-space: nowrap;
+  list-style: none;
+  font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Sans-serif !important;
+  text-align: left;
+  line-height: 1;
+  right: 5px;
+  font-size: 12px;
+}
+
+.span-user {
+  padding-right: 5px;
+}
+
+.Daily-Deals {
+  list-style: none;
+  display: inline-block;
+  border-left: 1px #909090 solid;
+  padding: 0 9px 0 11px;
+  margin: 0;
+  font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Sans-serif !important;
+  white-space: nowrap;
+  line-height: 1;
+  font-size: 12px;
+}
+
+.Gift-Cards {
+  list-style: none;
+  display: inline-block;
+  border-left: 1px #909090 solid;
+  padding: 3px 9px 0 11px;
+  margin: 0;
+  font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Sans-serif !important;
+  white-space: nowrap;
+  line-height: 1;
+  font-size: 12px;
+}
+
+.Help-Contact {
+  list-style: none;
+  display: inline-block;
+  border-left: 1px #909090 solid;
+  padding: 3px 9px 0 11px;
+  margin: 0;
+  font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Sans-serif !important;
+  white-space: nowrap;
+  line-height: 1;
+  font-size: 12px;
+}
+
+
+
+
+
+
 .dropbtn {
   background-color: #4CAF50;
   color: white;
@@ -129,7 +232,7 @@ table, th, .drop td {
 } */
 
 .w3-white {
-  padding: 20px 0 20px 0;
+  padding: 30px 0 30px 0;
   text-align: center;
 }
 
@@ -162,9 +265,21 @@ table, th, .drop td {
 
 
 .Searchbar{
-  width: 30%;
+  width: 40%;
   padding: 5px 10px 5px 10px;
-  border-radius: 3px;
+  border-radius: 3px 0 0 3px;
+  border: 1px solid #ddd;
+  background: #fff;
+  height: 38px;
+  font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Sans-serif !important;
+  line-height: 1;
+  font-size: 14px;
+  color: #333;
+  transition: border-color .1s linear;
+    transition-property: border-color;
+    transition-duration: 0.1s;
+    transition-timing-function: linear;
+    transition-delay: 0s;
 }
 
 /* .showcontent {
@@ -239,10 +354,10 @@ li {
   font-size: 14px;
   color: #333;
   text-align: left;
-  position: relative;
-  left: 443px;
-  bottom: 120px;
-  z-index: 1;
+  position: absolute;
+  left: 397px;
+  bottom: 600px;
+  z-index: 99999;
   background-color: white;
   border: 1px solid #aaa !important;
   -moz-box-shadow: 2px 2px 5px rgba(43, 5, 5, 0.2);
@@ -263,8 +378,8 @@ li {
   right: 30px;
   border-spacing: 0;
   cursor: default;
-
 }
+
 
 .Searchbar:focus {   /* make dropdown for autofill here */
   border: 1px solid rgb(85, 85, 85);
@@ -306,6 +421,10 @@ hr {
 .table2 .nav{
   text-align: center;
 }
+.table2 {
+  position: fixed;
+}
+
 
 
 select {
@@ -319,6 +438,8 @@ select {
   font-family: Montserrat, sans-serif;
   text-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
 }
+
+
 
 
 
