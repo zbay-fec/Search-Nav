@@ -277,11 +277,12 @@
   cursor: pointer;
   font: inherit;
   margin: 0;
+  border: 3px transparent black;
 
   border-spacing: 0;
 }
 .category-dropdown:hover{
-  border-top: 3px solid #0079bc;
+  border-top: 1.5px solid #0079bc;
 }
 .menu-item {
   cursor: pointer;
@@ -349,7 +350,7 @@
 
 .w3-dropdown-content {
   border: 1px solid rgb(85, 85, 85);
-  bottom: -218px;
+  bottom: -250px;
 }
 
 
@@ -640,7 +641,7 @@ a {
   text-align: left;
   position: absolute;
   left: 397px;
-  bottom: 600px;
+  bottom: 500px;
   z-index: 2;
   background-color: white;
   border: 1px solid #aaa !important;
