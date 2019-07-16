@@ -507,6 +507,7 @@ table, th, .drop td {
   font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Sans-serif !important;
   line-height: 1;
   font-size: 14px;
+  border-right: 1px black transparent;
   color: #333;
   transition: border-color .1s linear;
     transition-property: border-color;
@@ -515,6 +516,43 @@ table, th, .drop td {
     transition-delay: 0s;
 }
 
+.dropdown {
+  width: 10%;
+  padding: 6px 20px 5px 10px;
+  border-radius: 3px 0 0 3px;
+  border: 1px solid #ddd;
+  background: #fff;
+  height: 38px;
+  font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Sans-serif !important;
+  font-size: 14px;
+  color: #333;
+ 
+
+  -webkit-appearance: none;
+ 
+  padding-right: 10px;
+
+  background-position-x: 135px;
+  background-position-y: 14px;
+  background-size: 10% 25%;
+ 
+  color: #333;
+  font: 12px Arial;
+  margin-top: 10px;
+  width: 160px;
+  height: 38px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background-color: transparent;
+  border-radius: 3px;
+  margin: 0 0 5px;
+  background-image: url('/arrow.png');
+  background-repeat: no-repeat;
+  border-collapse: collapse;
+  border-spacing: 0;
+  white-space: nowrap;
+  text-align: left;
+}
 /* .showcontent {
   display: none;
   position: absolute;
@@ -534,13 +572,14 @@ li {
   background: #fff;
   -moz-box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
   box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+
   width: 400px;
   z-index: 9999;
   opacity: 1;
   width: 508.117px;
   top: -3.86667px;
   left: 40px;
-
+  display: block;
   list-style: none;
   display: block;
   outline: 0;
