@@ -151,7 +151,16 @@ class Search extends React.Component{
                 </div>
                 
                 <input className="Searchbar" type="text" placeholder="Search for anything" onChange={this.handleChange}></input>
-                <select className="dropdown"> <option value="test">test</option></select>
+                    <select className="dropdown"> 
+                        <option value="All Categories">All Categories</option>
+                        <option value="Antiques">Anitques</option>
+                        <option value="Art">Art</option>
+                        <option value="Baby">Baby</option>
+                        <option value="Books">Books</option>
+                        <option value="Business & Industrial">Business & Industrial</option>
+                        <option value="test">test</option>
+                        <option value="test">test</option>
+                    </select>
                  <button className="Search" onClick={this.handleSubmit}>Search</button>
                  <div className="showcontent">
                  </div>

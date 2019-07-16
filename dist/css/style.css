@@ -552,6 +552,16 @@ table, th, .drop td {
   border-spacing: 0;
   white-space: nowrap;
   text-align: left;
+  border-right: 1px black transparent;
+}
+
+.dropdown:focus {
+  border: 1px black solid;
+  transition: border-color .1s linear;
+    transition-property: border-color;
+    transition-duration: 0.6s;
+    transition-timing-function: linear;
+    transition-delay: 0s;
 }
 /* .showcontent {
   display: none;
