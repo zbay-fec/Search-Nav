@@ -109,6 +109,11 @@ class Search extends React.Component{
                                 <i id="alert"></i>
                             </button>
                         </li>
+                        <li className="cart">
+                            <a href="/cart" className="cart-icon">
+                                <i id="shop"></i>
+                            </a>
+                        </li>
                         
                     </ul>
                 </div>
@@ -117,10 +122,10 @@ class Search extends React.Component{
                     <img src="../Zbay.png"></img>
                    
                 <div className="w3-dropdown-hover">
-                    <button className="category-dropdown" aria-expanded="false">Shop by <p rowspan="2">category</p>
+                    <button className="category-dropdown" aria-expanded="false">Shop by <p rowspan="2">category<i id="arrow-dropdown"></i></p>
                         
                     </button>
-                    <i id="arrow-dropdown"></i>
+                    
                     <div className="w3-dropdown-content">
                     <table classname="drop">
                         <tr> 
