@@ -44,7 +44,7 @@ class Search extends React.Component{
     handleSubmit(){
         let target; //going to be what is dispatched to the window
         if(this.state.selected.length !== 0){
-            target = this.state.selected[0];
+            target = this.state.selected[0]; //what is selected withing the autofilling dropdown
         }else{
             target = this.state.Autofilling[0];
         }
@@ -53,7 +53,8 @@ class Search extends React.Component{
         Axios.post('http://localhost:3001/find', { name: target}) //going to use the first arr in the autocorrection
         .then(response => {
             console.log(response.data[0].productID);
-            this.setState({ selected: [] }); //reset to empty array after searching for the selected item
+            this.setState({ selected: [], Autofilling: [], input: '' }); //reset to empty array after searching for the selected item
+
             window.dispatchEvent(new CustomEvent('productChanged', {
                 detail: {
                   id: response.data[0].productID
@@ -105,7 +106,7 @@ class Search extends React.Component{
                         </li>
                         <li className="notifications">
                             <button className="bell-icon">
-                                <i id="alert">oi</i>
+                                <i id="alert"></i>
                             </button>
                         </li>
                         
