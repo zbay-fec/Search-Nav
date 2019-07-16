@@ -208,7 +208,6 @@
 }
 
 .category-dropdown {
-  padding-left: 3px;
   padding-right: 0;
   height: 40px;
   text-align: left;
@@ -219,10 +218,10 @@
   display: block;
   color: #555;
   border: 1px solid transparent;
-  border-width: 2px 1px 0;
+  border-width: 2px 1px 0px 1px;
   text-decoration: none;
   white-space: normal;
-  padding: 6px 5px 5px 8px;
+  padding: 6px 5px 5px 5px;
   font-size: 14px;
   line-height: 12px;
   word-break: normal;
@@ -230,10 +229,12 @@
   cursor: pointer;
   font: inherit;
   margin: 0;
-  border-collapse: collapse;
+
   border-spacing: 0;
 }
-
+.category-dropdown:hover{
+  border-top: 3px solid #0079bc;
+}
 .menu-item {
   cursor: pointer;
 }
@@ -290,14 +291,20 @@
   display: block;
 }
 
-.drop td{
-  font-size: 12px;
-  color: #555;
-}
+/* .drop th {
+  font-weight: bold;
+  font-size: 5px;
+  color: #333;
+  padding-right: 8px;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Sans-serif !important;
+  white-space: nowrap;
+} */
 
 .w3-dropdown-content {
   border: 1px solid rgb(85, 85, 85);
-  bottom: -180px;
+  bottom: -218px;
 }
 
 
@@ -310,6 +317,7 @@ nav ul a,
 nav .brand-logo {
   color: #444;
 }
+
 
 p {
   line-height: 1rem;
@@ -376,6 +384,12 @@ input {
 td {
   font-size: 12px;
   color: #555;
+  text-align: left;
+}
+th {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
 }
 
 .drop table {
@@ -383,7 +397,7 @@ td {
 }
 
 table, th, .drop td {
-  padding: 2px 20px 2px 20px;
+  padding: 2px 40px 2px 40px;
  
 }
 .drop td {
@@ -404,7 +418,7 @@ table, th, .drop td {
 } */
 
 .w3-white {
-  padding: 30px 0 30px 0;
+  padding: 12px 0 30px 0;
   text-align: center;
   background-color: #f5f5f5;
 }
@@ -603,9 +617,12 @@ hr {
   color: #555;
   padding: 0px 20px;
   font-size: 12px;
+}
+.nav td:hover{
+  text-decoration: underline;
+  cursor: pointer;
 
 }
-
 .table2 {
   position: relative;
   border-bottom: solid 2px #555;

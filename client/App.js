@@ -139,6 +139,7 @@ class Search extends React.Component{
                         </tr>
                         <tr>
                         <th rowspan="2">Electronics</th>
+                        <th rowspan="2">Home & Garden</th>
                         </tr>
                     </table>
                     </div>
