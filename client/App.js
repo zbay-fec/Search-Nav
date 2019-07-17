@@ -47,7 +47,7 @@ class Search extends React.Component{
         // }
 
         
-        Axios.post('http://localhost:3001/find', { name: target}) //going to use the first arr in the autocorrection
+        Axios.post('http://ec2-18-212-65-184.compute-1.amazonaws.com:3001/find', { name: target}) //going to use the first arr in the autocorrection
         .then(response => {
             this.setState({ selected: [], input: '' }); //reset to empty array after searching for the selected item
             console.log(response.data[0].productID);
@@ -64,7 +64,7 @@ class Search extends React.Component{
     }
 
     componentWillMount(){
-        Axios.get('http://localhost:3001/items') //recieving all names from all the Autofilling names
+        Axios.get('http://ec2-18-212-65-184.compute-1.amazonaws.com:3001//items') //recieving all names from all the Autofilling names
         .then(response => { this.setState({ items: response.data }) })
         .catch(err => console.log('ERR', err));
     }
