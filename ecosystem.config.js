@@ -10,7 +10,7 @@ module.exports = {
         key: '~/.ssh/search.pem',
         ref: 'origin/master',
         repo: 'https://github.com/zbay-fec/Search-Nav',
-        path: '/home/ubuntu/server',
+        path: '/home/ubuntu/Zbay/Search-Nav',
         'post-deploy': 'npm install && pm2 startOrRestart ecosystem.config.js'
       }
     }
