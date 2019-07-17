@@ -10,6 +10,7 @@ app.use(express.json());
 app.use(cors());
 app.use(parser());
 
+
 app.get('/items', (req, res) => {
     //then query on change of the input box
     db.findAllNames((err, suc) => {
