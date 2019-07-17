@@ -27,6 +27,8 @@
   font-size: 14px;
   color: #333;
   text-align: left;
+  box-shadow: 5px 3px 5px 6px #ccc;
+  
 }
 
 .top {
@@ -76,7 +78,7 @@
   list-style: none;
   display: inline-block;
   border-left: 1px #909090 solid;
-  padding: 0 9px 0 11px;
+  padding: 0px 9px 0 11px;
   margin: 0;
   font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Sans-serif !important;
   white-space: nowrap;
@@ -88,7 +90,7 @@
   list-style: none;
   display: inline-block;
   border-left: 1px #909090 solid;
-  padding: 3px 9px 0 11px;
+  padding: 0px 9px 0 11px;
   margin: 0;
   font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Sans-serif !important;
   white-space: nowrap;
@@ -100,7 +102,7 @@
   list-style: none;
   display: inline-block;
   border-left: 1px #909090 solid;
-  padding: 3px 9px 0 11px;
+  padding: 0px 9px 0 11px;
   margin: 0;
   font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Sans-serif !important;
   white-space: nowrap;
@@ -130,7 +132,6 @@
 .sell {
   list-style: none;
   display: inline-block;
-  border-right: 1px #c7c7c7 solid;
   vertical-align: middle;
   position: relative;
   top: -1px;
@@ -150,13 +151,15 @@
   display: inline-block;
   vertical-align: middle;
   position: relative;
+  list-style: none;
+  display: inline-block;
+  border-left: 1px #909090 solid;
+  padding: 0px 9px 0 11px;
+  margin: 0;
+  font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Sans-serif !important;
   white-space: nowrap;
-  margin: 0 3px;
-  padding: 0;
   line-height: 1;
-  font-size: 14px;
-  color: #333;
-  text-align: left;
+  font-size: 12px;
 
 }
 .notifications {
@@ -204,29 +207,69 @@
   white-space: nowrap;
 }
 
+.cart {
+  position: relative;
+  display: inline;
+  list-style: none;
+  white-space: nowrap;
+  line-height: 1;
+  font-size: 14px;
+  color: #333;
+  text-align: left;
+}
 
+.cart-icon {
+  width: 52px;
+  padding: 2px 17px 3px;
+  vertical-align: top;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 12px;
+  color: #333 !important;
+  display: inline-block;
+  border: 1px solid transparent;
+  position: relative;
+  border-width: 2px 1px 0;
+  text-decoration: none !important;
+  list-style: none;
+  white-space: nowrap;
+}
 
+/* .cart-icon:hover{
+  display: none;
+} */
 
-
-
-
+#shop {
+  width: 16px;
+  height: 18px;
+  display: block;
+  overflow: hidden;
+  text-indent: -9999px;
+  font-size: 0;
+  background-repeat: no-repeat;
+  background-size: 20% 110%;
+  background-image: url("/cart.png");
+  bottom: 3px;
+  cursor: pointer;
+  color: #333 !important;
+  list-style: none;
+  white-space: nowrap;
+}
 
 .category-dropdown {
-  padding-left: 3px;
   padding-right: 0;
   height: 40px;
   text-align: left;
   width: 100%;
-  font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Sans-serif !important;
+  font-family: Arial, Helvetica, sans-serif!important;
   position: relative;
   top: 14px;
   display: block;
   color: #555;
   border: 1px solid transparent;
-  border-width: 2px 1px 0;
   text-decoration: none;
   white-space: normal;
-  padding: 6px 5px 5px 8px;
+  padding: 6px 0px 5px 5px;
   font-size: 14px;
   line-height: 12px;
   word-break: normal;
@@ -234,25 +277,29 @@
   cursor: pointer;
   font: inherit;
   margin: 0;
-  border-collapse: collapse;
+  border: 3px transparent black;
+
   border-spacing: 0;
+}
+.category-dropdown:hover{
+  border-top: 1.5px solid #0079bc;
+}
+.menu-item {
+  cursor: pointer;
 }
 
 #arrow-dropdown {
-
-  padding: 0 0 0 80px;
+  padding: 0 0px 0px 70px;
   height: 7px;
-  margin-left: 75px;
+  margin-left: 15px;
   position: relative;
   top: 4px;
-  width: 4px;
   background-image: url('/arrow.png');
   background-repeat: no-repeat;
   background-size: 20% 50%;
   text-align: left;
   color: #555;
   font-size: 14px;
-  box-sizing: inherit;
   word-break: normal;
   cursor: pointer;
   line-height: 0.5;
@@ -280,8 +327,6 @@
   background-color: #f1f1f1;
   float: right;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.8);
-  border: 2px solid rgb(85, 85, 85);
   z-index: 1;
 }
 
@@ -289,9 +334,26 @@
   color: black;
   padding: 12px 16px;
   text-decoration: none;
-  border: 2px solid rgb(85, 85, 85);
   display: block;
 }
+
+/* .drop th {
+  font-weight: bold;
+  font-size: 5px;
+  color: #333;
+  padding-right: 8px;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Sans-serif !important;
+  white-space: nowrap;
+} */
+
+.w3-dropdown-content {
+  border: 1px solid rgb(85, 85, 85);
+  bottom: -250px;
+}
+
+
 
 .dropdown:focus .dropdown-content {display: block; }
 
@@ -301,6 +363,7 @@ nav ul a,
 nav .brand-logo {
   color: #444;
 }
+
 
 p {
   line-height: 1rem;
@@ -365,24 +428,45 @@ input {
 }
 
 td {
-  color: grey;
+  font-size: 12px;
+  color: #555;
+  text-align: left;
 }
+th {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
 .drop table {
   border: 2px solid rgb(197, 197, 197);
 }
 
 table, th, .drop td {
-  padding: 2px 20px 2px 20px;
+  padding: 2px 40px 2px 40px;
  
+}
+.drop td {
+  padding-right: 8px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Sans-serif !important;
+  white-space: nowrap;
+  line-height: 1;
+  text-align: left;
 }
 
 /* .w3-button {
   padding: 0px 2px 0px 2px;
 } */
 
-.w3-white {
-  padding: 30px 0 30px 0;
+.w4-white {
+  padding: 15px 0 30px 0;
   text-align: center;
+  background-color: #f5f5f5;
 }
 
 /* .Search -> search button  */
@@ -413,9 +497,10 @@ table, th, .drop td {
 }
 
 
+
 .Searchbar{
   width: 40%;
-  padding: 5px 10px 5px 10px;
+  padding: 5px 20px 5px 10px;
   border-radius: 3px 0 0 3px;
   border: 1px solid #ddd;
   background: #fff;
@@ -423,6 +508,7 @@ table, th, .drop td {
   font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Sans-serif !important;
   line-height: 1;
   font-size: 14px;
+  border-right: 1px black transparent;
   color: #333;
   transition: border-color .1s linear;
     transition-property: border-color;
@@ -431,6 +517,53 @@ table, th, .drop td {
     transition-delay: 0s;
 }
 
+.dropdown {
+  width: 10%;
+  padding: 6px 20px 5px 10px;
+  border-radius: 3px 0 0 3px;
+  border: 1px solid #ddd;
+  background: #fff;
+  height: 38px;
+  font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Sans-serif !important;
+  font-size: 14px;
+  color: #333;
+ 
+
+  -webkit-appearance: none;
+ 
+  padding-right: 10px;
+
+  background-position-x: 135px;
+  background-position-y: 14px;
+  background-size: 10% 25%;
+ 
+  color: #333;
+  font: 12px Arial;
+  margin-top: 10px;
+  width: 160px;
+  height: 38px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background-color: transparent;
+  border-radius: 3px;
+  margin: 0 0 5px;
+  background-image: url('/arrow.png');
+  background-repeat: no-repeat;
+  border-collapse: collapse;
+  border-spacing: 0;
+  white-space: nowrap;
+  text-align: left;
+  border-right: 1px black transparent;
+}
+
+.dropdown:focus {
+  border: 1px black solid;
+  transition: border-color .1s linear;
+    transition-property: border-color;
+    transition-duration: 0.6s;
+    transition-timing-function: linear;
+    transition-delay: 0s;
+}
 /* .showcontent {
   display: none;
   position: absolute;
@@ -444,15 +577,13 @@ table, th, .drop td {
 li {
   color: black;
 }
+
 .ui-complete {
   cursor: default;
   background: #fff;
-  border: 1px solid #aaa !important;
   -moz-box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
   box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-  -moz-border-radius: 3px 0 3px 3px;
-  -webkit-border-radius: 3px 0 3px 3px;
-  border-radius: 3px 0 3px 3px;
+
   width: 400px;
   z-index: 9999;
   opacity: 1;
@@ -479,8 +610,13 @@ li {
   width: 508.117px; 
   top: -3.86667px; 
   left: 3px; 
-  display: block;
+
+  cursor: pointer;
 }
+a {
+  cursor: pointer;
+}
+
 #autofill-column {
   position: relative;
   border-collapse: collapse;
@@ -505,7 +641,7 @@ li {
   text-align: left;
   position: absolute;
   left: 397px;
-  bottom: 600px;
+  bottom: 500px;
   z-index: 2;
   background-color: white;
   border: 1px solid #aaa !important;
@@ -528,6 +664,7 @@ li {
   border-spacing: 0;
   cursor: default;
 }
+
 
 
 .Searchbar:focus {   /* make dropdown for autofill here */
@@ -571,11 +708,14 @@ hr {
   color: #555;
   padding: 0px 20px;
   font-size: 12px;
+}
+.nav td:hover{
+  text-decoration: underline;
+  cursor: pointer;
 
 }
-
 .table2 {
-  position: relative;
+  position: static;
   border-bottom: solid 2px #555;
     border-bottom-color: rgb(85, 85, 85);
     border-bottom-style: solid;
@@ -591,10 +731,6 @@ hr {
   white-space: nowrap;
 }
 
-
-
-
-
 select {
   font-size: 16px;
   color: white;
@@ -606,6 +742,10 @@ select {
   font-family: Montserrat, sans-serif;
   text-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
 }
+
+/* #item-names:hover{
+  background-color: grey;
+} */
 
 
 

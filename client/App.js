@@ -14,51 +14,50 @@ class Search extends React.Component{
             Autofilling: [], //items that will be render below the search bar
             selected: []
         }
-        this.handleChange = this.handleChange.bind(this);
+       
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleSelection = this.handleSelection.bind(this);
     }
 
-    handleChange(e){
-        e.preventDefault();
-        //need to compare realtime keystrokes to filter thru names
-        // const names = this.state.items.map(  Autofilling) =>  Autofilling.name);
-        const names = this.state.items; //taking names that are in the state currently
-        const autoFill = [];
-            names.forEach(itemName => {
-                if(itemName.includes(e.currentTarget.value.toLowerCase())){ //try to compare by each word, and if it isnt included then drop it 
-                    if(e.currentTarget.value.length !== 0){
-                        autoFill.push(itemName); 
-                        
-                        this.setState({ 
-                            input: e.currentTarget.value,
-                            Autofilling: autoFill 
-                        });
-                    }else{
-                        this.setState({ Autofilling: [] })                                                                 
-                    }
-                }         
-            });
-    }
+    
 
-    handleSubmit(){
-        let target; //going to be what is dispatched to the window
-        if(this.state.selected.length !== 0){
-            target = this.state.selected[0];
+    handleSubmit(e){
+        console.log(e);
+        let target = e;
+        const y = document.getElementById("item"); //************************************** */
+        console.log(y, 'testing');
+        const x = document.getElementById("item");
+        console.log(x.value, "supposed to be top item");
+        if(!this.state.items.includes(e)){
+            target = x.value;
         }else{
-            target = this.state.Autofilling[0];
+            target = e;
         }
+
+
+        console.log(x.value, "item");
+        console.log(target, "target");
+
+        
+        //going to be what is dispatched to the window
+        // if(this.state.selected.length !== 0){
+        //     target = this.state.selected[0]; //what is selected withing the autofilling dropdown
+        // }else{
+        //     target = this.state.Autofilling[0];
+        // }
 
         
         Axios.post('http://localhost:3001/find', { name: target}) //going to use the first arr in the autocorrection
         .then(response => {
+            this.setState({ selected: [], input: '' }); //reset to empty array after searching for the selected item
             console.log(response.data[0].productID);
-            this.setState({ selected: [] }); //reset to empty array after searching for the selected item
             window.dispatchEvent(new CustomEvent('productChanged', {
                 detail: {
                   id: response.data[0].productID
                 }
               }));
+            
+            
             // console.log(response.data[0].productID)) //retrieves the id of the first itek in the autocorrect list
         })
         .catch(err => console.log(err))
@@ -71,9 +70,16 @@ class Search extends React.Component{
     }
 
     handleSelection(e){
-        this.state.selected.push(e.currentTarget.innerHTML);
-        this.setState({ selected: e.currentTarget.innerHTML });
-        this.handleSubmit();
+        if(this.state.items.includes(e.target.value)){
+            console.log(e.target.value);
+            // selected.push(e.target.value);
+            // this.setState({ selected: })
+            this.handleSubmit(e.target.value);
+            //e.target.value = ''; // resetting input after searching
+        }else{
+            null;
+        }
+
     }
 
   
@@ -105,21 +111,23 @@ class Search extends React.Component{
                         </li>
                         <li className="notifications">
                             <button className="bell-icon">
-                                <i id="alert">oi</i>
+                                <i id="alert"></i>
                             </button>
+                        </li>
+                        <li className="cart">
+                            <a href="/cart" className="cart-icon">
+                                <i id="shop"></i>
+                            </a>
                         </li>
                         
                     </ul>
                 </div>
                 <div className="Search-component">
-                <div className="w3-white">
+                <div className="w4-white">
                     <img src="../Zbay.png"></img>
                    
                 <div className="w3-dropdown-hover">
-                    <button className="category-dropdown" aria-expanded="false">Shop by <p rowspan="2">category</p>
-                        
-                    </button>
-                    <i id="arrow-dropdown"></i>
+                    <button className="category-dropdown" aria-expanded="false">Shop by <p rowspan="2">category<i id="arrow-dropdown"></i></p></button>
                     <div className="w3-dropdown-content">
                     <table classname="drop">
                         <tr> 
@@ -138,42 +146,39 @@ class Search extends React.Component{
                         </tr>
                         <tr>
                         <th rowspan="2">Electronics</th>
+                        <th rowspan="2">Home & Garden</th>
                         </tr>
                     </table>
                     </div>
                 </div>
                 
-                <input className="Searchbar" type="text" placeholder="Search for anything" onChange={this.handleChange}></input>
+
                 
+                <input onChange={this.handleSelection} list="item-names" className="Searchbar" type="text" placeholder="Search for anything" ></input>
+                <datalist id="item-names">
+                    {this.state.items.map((name) => {
+                        return <option id="item" value={name}>{name}</option>
+                    })}
+                </datalist>
+               
+                    
+                    
+                    
+                    <select className="dropdown"> 
+                        <option value="All Categories">All Categories</option>
+                        <option value="Antiques">Anitques</option>
+                        <option value="Ar">Art</option>
+                        <option value="Baby">Baby</option>
+                        <option value="Books">Books</option>
+                        <option value="Business & Industrial">Business & Industrial</option>
+                        <option value="test">test</option>
+                        <option value="test">test</option>
+                    </select>
                  <button className="Search" onClick={this.handleSubmit}>Search</button>
                  <div className="showcontent">
                  </div>
 
-                 {(this.state.Autofilling.length !== 0) ?
-                <table className="autofill-table">
-                    <div id="autofill-column">
-                    <tr>    
-                    <td className="autofill-items"> 
-                        <ul className="ui-autocomplete" tabindex="-1">                                                                                                                                 
-                            <li id="menu-item"> 
-                                <a onClick={this.handleSelection}>{this.state.Autofilling[0]}</a>
-                            </li>
-                            <li id="menu-item"> 
-                                <a onClick={this.handleSelection}>{this.state.Autofilling[1]}</a>
-                            </li>
-                            <li id="menu-item"> 
-                                <a onClick={this.handleSelection}>{this.state.Autofilling[2]}</a>
-                            </li>
-                            <li id="menu-item"> 
-                                <a onClick={this.handleSelection}>{this.state.Autofilling[3]}</a>
-                            </li>
-                        </ul>
-                        </td>
-                    </tr>
-                    </div>
-                </table>
-                : null
-                }
+
                  {<Table2 />}
                  
                 </div>
