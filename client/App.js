@@ -64,7 +64,7 @@ class Search extends React.Component{
     }
 
     componentWillMount(){
-        Axios.get('http://ec2-18-212-65-184.compute-1.amazonaws.com:3001//items') //recieving all names from all the Autofilling names
+        Axios.get('http://ec2-18-212-65-184.compute-1.amazonaws.com:3001/items') //recieving all names from all the Autofilling names
         .then(response => { this.setState({ items: response.data }) })
         .catch(err => console.log('ERR', err));
     }
