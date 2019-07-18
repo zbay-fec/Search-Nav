@@ -34,19 +34,6 @@ class Search extends React.Component{
             target = e;
         }
 
-
-        console.log(x.value, "item");
-        console.log(target, "target");
-
-        
-        //going to be what is dispatched to the window
-        // if(this.state.selected.length !== 0){
-        //     target = this.state.selected[0]; //what is selected withing the autofilling dropdown
-        // }else{
-        //     target = this.state.Autofilling[0];
-        // }
-
-        
         Axios.post('http://ec2-18-212-65-184.compute-1.amazonaws.com:3001/find', { name: target}) //going to use the first arr in the autocorrection
         .then(response => {
             this.setState({ selected: [], input: '' }); //reset to empty array after searching for the selected item
@@ -56,9 +43,7 @@ class Search extends React.Component{
                   id: response.data[0].productID
                 }
               }));
-            
-            
-            // console.log(response.data[0].productID)) //retrieves the id of the first itek in the autocorrect list
+        
         })
         .catch(err => console.log(err))
     }
@@ -83,7 +68,6 @@ class Search extends React.Component{
     }
 
   
-
     render(){
         return(
             <div>

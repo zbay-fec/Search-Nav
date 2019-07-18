@@ -7,9 +7,12 @@ const con = mysql.createConnection({
     password: process.env.PASS,
     database: process.env.NAME
   });
+
+
   
   con.connect(function(err) {
     if (err) throw err;
+    console.log(process.env.HOST, "HOST");
     console.log("Connected database!");
   });
 

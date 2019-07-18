@@ -41,4 +41,4 @@ app.post('/find', (req, res) => {
 })
 
 
-app.listen(port, host, ()=> console.log(`shenanigans have started on aisle ${port}`));
+app.listen(port, ()=> console.log(`shenanigans have started on aisle ${port}`));
