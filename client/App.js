@@ -14,20 +14,25 @@ class Search extends React.Component{
             Autofilling: [], //items that will be render below the search bar
             selected: []
         }
-       
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleSelection = this.handleSelection.bind(this);
     }
 
+    handleCart(e){
+        e.preventDefault();
+        window.dispatchEvent(
+          new CustomEvent('showCart', {
+            detail: {
+              showCart: true
+            }
+          })
+        );
+    }
     
-
     handleSubmit(e){
         console.log(e);
         let target = e;
-        const y = document.getElementById("item"); //************************************** */
-        console.log(y, 'testing');
-        const x = document.getElementById("item");
-        console.log(x.value, "supposed to be top item");
+        const x = document.getElementById("item"); //defaults to zombie knife if hit search
         if(!this.state.items.includes(e)){
             target = x.value;
         }else{
@@ -56,9 +61,7 @@ class Search extends React.Component{
 
     handleSelection(e){
         if(this.state.items.includes(e.target.value)){
-            console.log(e.target.value);
-            // selected.push(e.target.value);
-            // this.setState({ selected: })
+            // console.log(e.target.value);
             this.handleSubmit(e.target.value);
             //e.target.value = ''; // resetting input after searching
         }else{
@@ -91,7 +94,7 @@ class Search extends React.Component{
                             <span className="span-sell">sell</span>
                         </li>
                         <li className="my-ebay">
-                            <span className="span-My">My eBay</span>
+                            <span className="span-My">My ZBay</span>
                         </li>
                         <li className="notifications">
                             <button className="bell-icon">
@@ -99,7 +102,7 @@ class Search extends React.Component{
                             </button>
                         </li>
                         <li className="cart">
-                            <a href="/cart" className="cart-icon">
+                            <a className="cart-icon"  onClick={this.handleCart}>
                                 <i id="shop"></i>
                             </a>
                         </li>
@@ -108,12 +111,12 @@ class Search extends React.Component{
                 </div>
                 <div className="Search-component">
                 <div className="w4-white">
-                    <img src="../Zbay.png"></img>
+                    <img id="Search-Zbay-logo"src="../Zbay.png"></img>
                    
                 <div className="w3-dropdown-hover">
                     <button className="category-dropdown" aria-expanded="false">Shop by <p rowspan="2">category<i id="arrow-dropdown"></i></p></button>
                     <div className="w3-dropdown-content">
-                    <table classname="drop">
+                    <table id="drop">
                         <tr> 
                             <th>Collectibles and art</th> 
                             <th>Fashion</th>
