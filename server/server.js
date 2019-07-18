@@ -5,6 +5,9 @@ const cors = require('cors');
 const parser = require('body-parser');
 const app = express();
 
+const port = process.env.PORT || 3001;
+const host = process.env.HOST || "0.0.0.0";
+
 app.use(express.static(path.join(__dirname, '../dist')));
 app.use(express.json());
 app.use(cors());
@@ -38,4 +41,4 @@ app.post('/find', (req, res) => {
 })
 
 
-app.listen(3001, ()=> console.log(`shenanigans have started on aisle 3001`));
+app.listen(port, host, ()=> console.log(`shenanigans have started on aisle ${port}`));
