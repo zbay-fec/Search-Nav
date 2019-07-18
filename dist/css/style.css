@@ -202,7 +202,7 @@
   white-space: nowrap;
 }
 
-.cart {
+.Search-cart {
   position: relative;
   display: inline;
   list-style: none;
@@ -348,18 +348,9 @@
   bottom: -160px;
 }
 
-
-
-.dropdown:focus .dropdown-content {display: block; }
-
-
 #right-top i {
   padding: 0 0 0 80px;
   position: relative;
-}
-
-.sidenav-trigger {
-  color: #26a69a;
 }
 
 .parallax-container {
@@ -524,14 +515,14 @@ footer.page-footer {
   border-right: 1px black transparent;
 }
 
-.dropdown:focus {
+/* .dropdown:focus {
   border: 1px black solid;
   transition: border-color .1s linear;
     transition-property: border-color;
     transition-duration: 0.6s;
     transition-timing-function: linear;
     transition-delay: 0s;
-}
+} */
 /* .showcontent {
   display: none;
   position: absolute;

@@ -101,7 +101,7 @@ class Search extends React.Component{
                                 <i id="alert"></i>
                             </button>
                         </li>
-                        <li className="cart">
+                        <li className="Search-cart">
                             <a className="cart-icon"  onClick={this.handleCart}>
                                 <i id="shop"></i>
                             </a>
