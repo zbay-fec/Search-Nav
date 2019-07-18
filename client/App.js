@@ -37,7 +37,14 @@ class Search extends React.Component{
         }else{
             target = e;
         }
-
+        window.dispatchEvent(
+            new CustomEvent('showCart', {
+              detail: {
+                showCart: false
+              }
+            })
+          );
+        
         Axios.post('http://ec2-18-212-65-184.compute-1.amazonaws.com:3001/find', { name: target}) //going to use the first arr in the autocorrection
         .then(response => {
             this.setState({ selected: [], input: '' }); //reset to empty array after searching for the selected item
