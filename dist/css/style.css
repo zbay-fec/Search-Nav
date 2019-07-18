@@ -230,6 +230,10 @@
   white-space: nowrap;
 }
 
+/* .cart-icon:hover{
+  display: none;
+} */
+
 #shop {
   width: 16px;
   height: 18px;
@@ -288,7 +292,7 @@
 #arrow-dropdown {
   padding: 0 0px 0px 20px;
   height: 7px;
-  margin-left: 2px;
+  margin-left: 1px;
   position: relative;
   top: 4px;
   background-image: url('https://searchcomponent.s3.us-east-2.amazonaws.com/searchpngs/downArrow.png');

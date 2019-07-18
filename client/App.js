@@ -31,12 +31,12 @@ class Search extends React.Component{
     
     handleSubmit(e){
         let target = e;
-        const x = document.getElementById("item"); //defaults to zombie knife if hit search
-        if(!this.state.items.includes(e)){
-            target = x.value;
-        }else{
-            target = e;
-        }
+        // const x = document.getElementById("item"); //defaults to zombie knife if hit search
+        // if(!this.state.items.includes(e)){
+        //     target = x.value;
+        // }else{
+        //     target = e;
+        // }
         window.dispatchEvent(
             new CustomEvent('showCart', {
               detail: {
@@ -47,8 +47,10 @@ class Search extends React.Component{
         
         Axios.post('http://ec2-18-212-65-184.compute-1.amazonaws.com:3001/find', { name: target}) //going to use the first arr in the autocorrection
         .then(response => {
+            console.log(response.data[0].productID);
             this.setState({ selected: [], input: '' }); //reset to empty array after searching for the selected item
             window.dispatchEvent(new CustomEvent('productChanged', {
+                
                 detail: {
                   id: response.data[0].productID
                 }
@@ -68,7 +70,7 @@ class Search extends React.Component{
         if(this.state.items.includes(e.target.value)){
             // console.log(e.target.value);
             this.handleSubmit(e.target.value);
-            //e.target.value = ''; // resetting input after searching
+            e.target.value = ''; // resetting input after searching
         }else{
             null;
         }
@@ -93,6 +95,9 @@ class Search extends React.Component{
                         <li className="Help-Contact">
                             <span className="span-help">Help & Contact</span>
                         </li>
+                        {/* <li className="deals">
+                            <img id="deals" src="https://ir.ebaystatic.com/cr/v/c1/61203_071519__GG_SM_HRZ_RW29_GenericPrimeMsg_Doodle_150x30_R1.gif"></img>
+                        </li> */}
                     </ul>
                     <ul id="right-top">
                         <li className="sell">
