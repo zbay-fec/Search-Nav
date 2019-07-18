@@ -115,28 +115,28 @@ class Search extends React.Component{
                    
                 <div className="w3-dropdown-hover">
                     <button className="category-dropdown" aria-expanded="false">Shop by <p rowspan="2">category<i id="arrow-dropdown"></i></p></button>
-                    <div className="w3-dropdown-content">
-                    <table id="drop">
-                        <tr> 
-                            <th>Collectibles and art</th> 
-                            <th>Fashion</th>
-                            <th>Sporting goods</th>
-                        </tr>
-                        <tr> 
-                            <td>Collectibles</td>
-                        </tr>
-                        <tr>
-                            <td>Coins & paper money Antiques</td>
-                        </tr>
-                        <tr>
-                            <td>Sports memorabillia</td>
-                        </tr>
-                        <tr>
-                        <th rowspan="2">Electronics</th>
-                        <th rowspan="2">Home & Garden</th>
-                        </tr>
-                    </table>
-                    </div>
+                        <div className="w3-dropdown-content">
+                            <table id="drop">
+                                <tr> 
+                                    <th>Collectibles and art</th> 
+                                    <th>Fashion</th>
+                                    <th>Sporting goods</th>
+                                </tr>
+                                <tr> 
+                                    <td>Collectibles</td>
+                                </tr>
+                                <tr>
+                                    <td>Coins & paper money Antiques</td>
+                                </tr>
+                                <tr>
+                                    <td>Sports memorabillia</td>
+                                </tr>
+                                <tr>
+                                <th rowspan="2">Electronics</th>
+                                <th rowspan="2">Home & Garden</th>
+                                </tr>
+                            </table>
+                        </div>
                 </div>
                 
 
@@ -147,10 +147,6 @@ class Search extends React.Component{
                         return <option id="item" value={name}>{name}</option>
                     })}
                 </datalist>
-               
-                    
-                    
-                    
                     <select className="dropdown"> 
                         <option value="All Categories">All Categories</option>
                         <option value="Antiques">Anitques</option>

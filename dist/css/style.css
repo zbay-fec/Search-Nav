@@ -404,7 +404,7 @@ footer.page-footer {
   position: relative;
 }
 
-#drop th, td {
+#drop th, #drop td {
   padding: 2px 40px 2px 40px;
  
 }
