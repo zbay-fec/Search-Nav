@@ -111,7 +111,7 @@ class Search extends React.Component{
                 </div>
                 <div className="Search-component">
                 <div className="w4-white">
-                    <img id="Search-Zbay-logo"src="../Zbay.png"></img>
+                    <img id="Search-Zbay-logo"src="https://searchcomponent.s3.us-east-2.amazonaws.com/searchpngs/Zbay.png"></img>
                    
                 <div className="w3-dropdown-hover">
                     <button className="category-dropdown" aria-expanded="false">Shop by <p rowspan="2">category<i id="arrow-dropdown"></i></p></button>
