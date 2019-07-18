@@ -7,19 +7,20 @@ const Table2 = () => {
                <hr></hr>
                 <div className="table2">
                     <table className="nav">
-                        <tr>
-                            <td>Home</td>
-                            <td>Saved</td>
-                            <td>Motors</td>
-                            <td>Fashion</td>
-                            <td>Electronics</td>
-                            <td>Collectibles & Art</td>
-                            <td>Home & Garden</td>
-                            <td>Sporting Goods</td>
-                            <td>Toys</td>
-                            <td>Business & industrial</td>
-
-                        </tr>
+                        <tbody>
+                            <tr>
+                                <td>Home</td>
+                                <td>Saved</td>
+                                <td>Motors</td>
+                                <td>Fashion</td>
+                                <td>Electronics</td>
+                                <td>Collectibles & Art</td>
+                                <td>Home & Garden</td>
+                                <td>Sporting Goods</td>
+                                <td>Toys</td>
+                                <td>Business & industrial</td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
         </div>

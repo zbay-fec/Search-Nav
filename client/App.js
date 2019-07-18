@@ -30,7 +30,6 @@ class Search extends React.Component{
     }
     
     handleSubmit(e){
-        console.log(e);
         let target = e;
         const x = document.getElementById("item"); //defaults to zombie knife if hit search
         if(!this.state.items.includes(e)){
@@ -42,7 +41,6 @@ class Search extends React.Component{
         Axios.post('http://ec2-18-212-65-184.compute-1.amazonaws.com:3001/find', { name: target}) //going to use the first arr in the autocorrection
         .then(response => {
             this.setState({ selected: [], input: '' }); //reset to empty array after searching for the selected item
-            console.log(response.data[0].productID);
             window.dispatchEvent(new CustomEvent('productChanged', {
                 detail: {
                   id: response.data[0].productID
@@ -114,28 +112,30 @@ class Search extends React.Component{
                     <img id="Search-Zbay-logo"src="https://searchcomponent.s3.us-east-2.amazonaws.com/searchpngs/Zbay.png"></img>
                    
                 <div className="w3-dropdown-hover">
-                    <button className="category-dropdown" aria-expanded="false">Shop by <p rowspan="2">category<i id="arrow-dropdown"></i></p></button>
+                    <button className="category-dropdown" aria-expanded="false">Shop by <p rowSpan="2">category<i id="arrow-dropdown"></i></p></button>
                         <div className="w3-dropdown-content">
-                            <table id="drop">
-                                <tr> 
-                                    <th>Collectibles and art</th> 
-                                    <th>Fashion</th>
-                                    <th>Sporting goods</th>
-                                </tr>
-                                <tr> 
-                                    <td>Collectibles</td>
-                                </tr>
-                                <tr>
-                                    <td>Coins & paper money Antiques</td>
-                                </tr>
-                                <tr>
-                                    <td>Sports memorabillia</td>
-                                </tr>
-                                <tr>
-                                <th rowspan="2">Electronics</th>
-                                <th rowspan="2">Home & Garden</th>
-                                </tr>
-                            </table>
+                                <table id="drop">
+                                    <tbody>
+                                        <tr> 
+                                            <th>Collectibles and art</th> 
+                                            <th>Fashion</th>
+                                            <th>Sporting goods</th>
+                                        </tr>
+                                        <tr> 
+                                            <td>Collectibles</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Coins & paper money Antiques</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sports memorabillia</td>
+                                        </tr>
+                                        <tr>
+                                        <th rowSpan="2">Electronics</th>
+                                        <th rowSpan="2">Home & Garden</th>
+                                        </tr>
+                                    </tbody>
+                                </table>
                         </div>
                 </div>
                 
@@ -143,8 +143,8 @@ class Search extends React.Component{
                 
                 <input onChange={this.handleSelection} list="item-names" className="Searchbar" type="text" placeholder="Search for anything" ></input>
                 <datalist id="item-names">
-                    {this.state.items.map((name) => {
-                        return <option id="item" value={name}>{name}</option>
+                    {this.state.items.map((name, i) => {
+                        return <option id="item" key={i} value={name}>{name}</option>
                     })}
                 </datalist>
                     <select className="dropdown"> 
