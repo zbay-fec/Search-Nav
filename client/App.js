@@ -32,34 +32,33 @@ class Search extends React.Component{
 
     autoComplete(input, cb){
         let items = this.state.items;
-          
-          const fuzzy = new FuzzySearch(items, [], {
+
+          const findClosestItem = new FuzzySearch(items, [], {
             caseSensitive: false,
             sort: true
           });
-          let result = fuzzy.search(input); //will be the input
-          cb(null, result[0])
-          console.log(result); 
+
+          let allItemsThatAreClose = findClosestItem.search(input); //will be the input
+          const foundItem = allItemsThatAreClose[0];
+          cb(null, foundItem);
+          console.log(foundItem); 
           console.log(this.state.input);
-   
     }
     
-    handleSubmit(e, selected){
+    handleSubmit(e, selectedOnDropdown){
         let target = e;
         console.log(this.state.input)
-        if(selected){
-            console.log("item was selected by dropdown");
-        }else{
+        if(!selectedOnDropdown){ 
             target = this.state.input;
             this.autoComplete(target, (err, suc) => {
                 if(err){
                     console.log("didnt worko");
                 }else{
-                    console.log(suc, "did work!!!!");
                     target = suc;
                 }
             })
         }
+        
         console.log(target);
 
         window.dispatchEvent(
@@ -74,6 +73,7 @@ class Search extends React.Component{
         .then(response => {
             console.log(response.data[0].productID);
             this.setState({ selected: [], input: '' }); //reset to empty array after searching for the selected item
+            console.log(this.state.input, "should be empty");
             window.dispatchEvent(new CustomEvent('productChanged', {
                 detail: {
                   id: response.data[0].productID
@@ -98,6 +98,11 @@ class Search extends React.Component{
         }else{
             null;
         }
+    }
+
+    handleKey(e){
+        console.log(e);
+        console.log(e.key.code)
     }
 
 
@@ -179,7 +184,7 @@ class Search extends React.Component{
                 
 
                 
-                <input onChange={this.handleSelection} list="item-names" className="Searchbar" type="text" placeholder="Search for anything" ></input>
+                <input onChange={this.handleSelection} onKeyUp={() => this.handleKey} list="item-names" className="Searchbar" type="text" placeholder="Search for anything" ></input>
                 <datalist id="item-names">
                     {this.state.items.map((name, i) => {
                         return <option id="item" key={i} value={name}>{name}</option>
