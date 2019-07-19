@@ -1,17 +1,16 @@
 const express = require('express');
 const db = require('../db');
-const path = require('path');
 const cors = require('cors');
 const parser = require('body-parser');
+const compression = require("compression");
 const app = express();
-
 const port = process.env.PORT || 3001;
-const host = process.env.HOST || "0.0.0.0";
 
 app.use(express.static("dist"));
 app.use(express.json());
-app.use(cors());
 app.use(parser.json({ strict: false }));
+app.use(cors());
+app.use(compression());
 
 
 app.get('/items', (req, res) => {

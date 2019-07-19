@@ -12,11 +12,11 @@ class Search extends React.Component{
         this.state ={
             input: '', //current state of search bar
             items: [], //names of items 
-            Autofilling: [], //items that will be render below the search bar
-            selected: []
+            Autofilling: [] //items that will be render below the search bar
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleSelection = this.handleSelection.bind(this);
+        this.handleKey = this.handleKey.bind(this);
     }
 
     handleCart(e){
@@ -33,21 +33,20 @@ class Search extends React.Component{
     autoComplete(input, cb){
         let items = this.state.items;
 
-          const findClosestItem = new FuzzySearch(items, [], {
+        const findClosestItem = new FuzzySearch(items, [], {
             caseSensitive: false,
             sort: true
-          });
+        });
 
-          let allItemsThatAreClose = findClosestItem.search(input); //will be the input
-          const foundItem = allItemsThatAreClose[0];
-          cb(null, foundItem);
-          console.log(foundItem); 
-          console.log(this.state.input);
+        let allItemsThatAreClose = findClosestItem.search(input); //will be the input
+        const foundItem = allItemsThatAreClose[0];
+          
+        cb(null, foundItem);
     }
     
     handleSubmit(e, selectedOnDropdown){
         let target = e;
-        console.log(this.state.input)
+
         if(!selectedOnDropdown){ 
             target = this.state.input;
             this.autoComplete(target, (err, suc) => {
@@ -58,8 +57,6 @@ class Search extends React.Component{
                 }
             })
         }
-        
-        console.log(target);
 
         window.dispatchEvent(
             new CustomEvent('showCart', {
@@ -72,8 +69,7 @@ class Search extends React.Component{
         Axios.post('http://ec2-18-212-65-184.compute-1.amazonaws.com:3001/find', { name: target}) //going to use the first arr in the autocorrection
         .then(response => {
             console.log(response.data[0].productID);
-            this.setState({ selected: [], input: '' }); //reset to empty array after searching for the selected item
-            console.log(this.state.input, "should be empty");
+            this.setState({ input: '' }); //reset to empty array after searching for the selected item
             window.dispatchEvent(new CustomEvent('productChanged', {
                 detail: {
                   id: response.data[0].productID
@@ -101,12 +97,10 @@ class Search extends React.Component{
     }
 
     handleKey(e){
-        console.log(e);
-        console.log(e.key.code)
+        if(e.key === "Enter"){
+            this.handleSubmit()
+        }
     }
-
-
-
     
     render(){
         return(
@@ -126,9 +120,9 @@ class Search extends React.Component{
                         <li className="Help-Contact">
                             <span className="span-help">Help & Contact</span>
                         </li>
-                        {/* <li className="deals">
+                        <li className="deals">
                             <img id="deals" src="https://ir.ebaystatic.com/cr/v/c1/61203_071519__GG_SM_HRZ_RW29_GenericPrimeMsg_Doodle_150x30_R1.gif"></img>
-                        </li> */}
+                        </li>
                     </ul>
                     <ul id="right-top">
                         <li className="sell">
@@ -181,10 +175,8 @@ class Search extends React.Component{
                                 </table>
                         </div>
                 </div>
-                
 
-                
-                <input onChange={this.handleSelection} onKeyUp={() => this.handleKey} list="item-names" className="Searchbar" type="text" placeholder="Search for anything" ></input>
+                <input onChange={this.handleSelection} onKeyPress={this.handleKey} list="item-names" className="Searchbar" type="text" placeholder="Search for anything" ></input>
                 <datalist id="item-names">
                     {this.state.items.map((name, i) => {
                         return <option id="item" key={i} value={name}>{name}</option>
