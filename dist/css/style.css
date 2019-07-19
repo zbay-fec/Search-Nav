@@ -232,6 +232,7 @@
   font-size: 14px;
   color: #333;
   text-align: left;
+  margin: 0 3px;
 }
 
 .cart-icon {
@@ -250,16 +251,12 @@
   list-style: none;
   white-space: nowrap;
 }
-
 /* .cart-icon:hover{
   display: none;
 } */
 #shop {
-  width: 16px;
-  height: 18px;
   display: block;
   overflow: hidden;
-  text-indent: -9999px;
   font-size: 0;
   background-repeat: no-repeat;
   background-size: 20% 110%;
@@ -269,7 +266,27 @@
   color: #333 !important;
   list-style: none;
   white-space: nowrap;
+  height: 18px;
+  width: 23px;
+  fill: #555;
 }
+#qty {
+  position: absolute;
+  right: 30px;
+  top: -8px;
+  z-index: 99999;
+  font: bold 11px Arial;
+  background: #f18e00;
+  color: white;
+  padding: 1px 4px 1px 4px;
+  margin-left: 2px;
+  border-radius: 2px;
+  width: 11px;
+  text-align: center;
+  display: flex-box;
+
+}
+
 .category-dropdown p{
   margin: 0px;
   width: 10px;
@@ -380,7 +397,7 @@
 
 #right-top i {
   padding: 0 0 0 80px;
-  position: relative;
+  position: realtive;
 }
 
 

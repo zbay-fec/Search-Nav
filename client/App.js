@@ -12,7 +12,8 @@ class Search extends React.Component{
         this.state ={
             input: '', //current state of search bar
             items: [], //names of items 
-            Autofilling: [] //items that will be render below the search bar
+            Autofilling: [], //items that will be render below the search bar
+            qty: 0
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleSelection = this.handleSelection.bind(this);
@@ -58,15 +59,16 @@ class Search extends React.Component{
             })
         }
 
+
         window.dispatchEvent(
-            new CustomEvent('showCart', {
+            new CustomEvent('showCart',  {
               detail: {
                 showCart: false
               }
             })
           );
         
-        Axios.post('http://ec2-18-212-65-184.compute-1.amazonaws.com:3001/find', { name: target}) //going to use the first arr in the autocorrection
+        Axios.post('http://ec2-18-212-65-184.compute-1.amazonaws.com:3001/find', { name: target }) //going to use the first arr in the autocorrection
         .then(response => {
             console.log(response.data[0].productID);
             this.setState({ input: '' }); //reset to empty array after searching for the selected item
@@ -81,6 +83,7 @@ class Search extends React.Component{
     }
 
     componentWillMount(){
+        window.addEventListener('updateQty', e => this.setState({qty: e.detail.totalQty}));
         Axios.get('http://ec2-18-212-65-184.compute-1.amazonaws.com:3001/items') //recieving all names from all the Autofilling names
         .then(response => { this.setState({ items: response.data }) })
         .catch(err => console.log('ERR', err));
@@ -99,13 +102,13 @@ class Search extends React.Component{
     handleKey(e){
         if(e.key === "Enter"){
             this.handleSubmit()
+            e.value = "";
         }
     }
     
     render(){
         return(
             <div>
-               
                 <div className="top-bar">
                     <ul className="top">
                         <li className="user">
@@ -137,8 +140,10 @@ class Search extends React.Component{
                             </button>
                         </li>
                         <li className="Search-cart">
-                            <a className="cart-icon"  onClick={this.handleCart}>
-                                <i id="shop"></i>
+                            <a className="cart-icon" onClick={this.handleCart}>
+                                <i id="shop">
+                                    <p id="qty">{this.state.qty}</p>
+                                </i>
                             </a>
                         </li>
                         
