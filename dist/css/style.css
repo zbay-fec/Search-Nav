@@ -204,6 +204,7 @@
   text-decoration: none !important;
   list-style: none;
   white-space: nowrap;
+  bottom: 5px;
 }
 
 #alert {
@@ -250,6 +251,7 @@
   text-decoration: none !important;
   list-style: none;
   white-space: nowrap;
+  bottom: 5px;
 }
 /* .cart-icon:hover{
   display: none;
