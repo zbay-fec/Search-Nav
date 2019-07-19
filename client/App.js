@@ -1,6 +1,7 @@
 import React from 'react';
 import Axios from 'axios';
 import Table2 from './table2';
+import FuzzySearch from 'fuzzy-search';
 
 
 //when you enter instead of clicking on an  Autofilling from the drop down menu
@@ -28,15 +29,39 @@ class Search extends React.Component{
           })
         );
     }
+
+    autoComplete(input, cb){
+        let items = this.state.items;
+          
+          const fuzzy = new FuzzySearch(items, [], {
+            caseSensitive: false,
+            sort: true
+          });
+          let result = fuzzy.search(input); //will be the input
+          cb(null, result[0])
+          console.log(result); 
+          console.log(this.state.input);
+   
+    }
     
-    handleSubmit(e){
+    handleSubmit(e, selected){
         let target = e;
-        // const x = document.getElementById("item"); //defaults to zombie knife if hit search
-        // if(!this.state.items.includes(e)){
-        //     target = x.value;
-        // }else{
-        //     target = e;
-        // }
+        console.log(this.state.input)
+        if(selected){
+            console.log("item was selected by dropdown");
+        }else{
+            target = this.state.input;
+            this.autoComplete(target, (err, suc) => {
+                if(err){
+                    console.log("didnt worko");
+                }else{
+                    console.log(suc, "did work!!!!");
+                    target = suc;
+                }
+            })
+        }
+        console.log(target);
+
         window.dispatchEvent(
             new CustomEvent('showCart', {
               detail: {
@@ -50,7 +75,6 @@ class Search extends React.Component{
             console.log(response.data[0].productID);
             this.setState({ selected: [], input: '' }); //reset to empty array after searching for the selected item
             window.dispatchEvent(new CustomEvent('productChanged', {
-                
                 detail: {
                   id: response.data[0].productID
                 }
@@ -67,20 +91,22 @@ class Search extends React.Component{
     }
 
     handleSelection(e){
+        this.setState({ input: e.target.value})
         if(this.state.items.includes(e.target.value)){
             // console.log(e.target.value);
-            this.handleSubmit(e.target.value);
-            e.target.value = ''; // resetting input after searching
+            this.handleSubmit(e.target.value, true);
         }else{
             null;
         }
-
     }
 
-  
+
+
+    
     render(){
         return(
             <div>
+               
                 <div className="top-bar">
                     <ul className="top">
                         <li className="user">
