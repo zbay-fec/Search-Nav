@@ -82,7 +82,7 @@ class Search extends React.Component{
         .catch(err => console.log(err))
     }
 
-    componentWillMount(){
+    componentDidMount(){
         window.addEventListener('updateQty', e => this.setState({qty: e.detail.totalQty}));
         Axios.get('http://ec2-18-212-65-184.compute-1.amazonaws.com:3001/items') //recieving all names from all the Autofilling names
         .then(response => { this.setState({ items: response.data }) })
