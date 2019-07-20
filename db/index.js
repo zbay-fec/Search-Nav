@@ -28,7 +28,7 @@ const con = mysql.createConnection({
 
   const getSpecificItem = (item, cb) => {
                             //placeholder
-    con.query(`select * from items where items.name='${item.username}' `, (err, results) => {
+    con.query(`select * from items where items.name="${item.username}" `, (err, results) => {
         if(err) cb(err);
         cb(null, results);
     })

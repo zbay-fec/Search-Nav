@@ -67,6 +67,8 @@ class Search extends React.Component{
               }
             })
           );
+          console.log(target);
+          
         
         Axios.post('http://ec2-18-212-65-184.compute-1.amazonaws.com:3001/find', { name: target }) //going to use the first arr in the autocorrection
         .then(response => {
@@ -77,7 +79,6 @@ class Search extends React.Component{
                   id: response.data[0].productID
                 }
               }));
-        
         })
         .catch(err => console.log(err))
     }
