@@ -33,7 +33,7 @@ app.get('/items', (req, res) => {
 app.post('/find', (req, res) => {
     console.log(req.body)
     //posting when clicking the item in the autofilling recommended
-    db.getSpecificName({username: req.body.name}, (err, results) => {
+    db.getSpecificItem({item: req.body.name}, (err, results) => {
         if(err) console.log('ERRRRR', err);
         res.send(results);
     })

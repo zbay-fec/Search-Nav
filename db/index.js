@@ -19,7 +19,6 @@ const con = mysql.createConnection({
 //going to get names for each item.
 //going to move all names to react array in order to filter for autofilling functionality
   const findAllNames = (cb) => {
-    console.log('oi');
                             //placeholder //put in .escape(user) format instead of ${}
     con.query(`Select items.name from items`, (err, results) => {
         if(err) cb(err);
@@ -27,13 +26,13 @@ const con = mysql.createConnection({
     }) 
   }
 
-  const getSpecificName = (user, cb) => {
+  const getSpecificItem = (item, cb) => {
                             //placeholder
-    con.query(`select * from items where items.name='${user.username}' `, (err, results) => {
+    con.query(`select * from items where items.name='${item.username}' `, (err, results) => {
         if(err) cb(err);
         cb(null, results);
     })
   }
 
 
-module.exports = { findAllNames, getSpecificName };
+module.exports = { findAllNames, getSpecificItem };
