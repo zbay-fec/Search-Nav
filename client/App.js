@@ -19,6 +19,7 @@ class Search extends React.Component{
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleSelection = this.handleSelection.bind(this);
         this.handleKey = this.handleKey.bind(this);
+        this.randomItem = this.randomItem.bind(this);
     }
 
     handleCart(e){
@@ -92,7 +93,6 @@ class Search extends React.Component{
     }
 
     handleSelection(e){
-       
         this.setState({ input: e.target.value})
         if(this.state.items.includes(e.target.value)){
             // console.log(e.target.value);
@@ -102,13 +102,17 @@ class Search extends React.Component{
         }
     }
 
-
     handleKey = (e) => {
         if(e.key === "Enter"){
             this.handleSubmit()
-            e.value = "";
-
         }
+    }
+
+    randomItem(){
+        const randomPos = parseInt(Math.random() * 100);
+        const randomItem = this.state.items[randomPos];
+       
+        this.handleSubmit(randomItem, true); //true will mean that in handle submit it wont try to take the input, and instead, take the random item from click
     }
     
     render(){
@@ -156,7 +160,7 @@ class Search extends React.Component{
                 </div>
                 <div className="Search-component">
                 <div className="w4-white">
-                    <img id="Search-Zbay-logo"src="https://searchcomponent.s3.us-east-2.amazonaws.com/searchpngs/Zbay.png"></img>
+                    <img id="Search-Zbay-logo"src="https://searchcomponent.s3.us-east-2.amazonaws.com/searchpngs/Zbay.png" onClick={this.randomItem}></img>
                    
                 <div className="w3-dropdown-hover">
                     <button className="category-dropdown" aria-expanded="false">Shop by <p rowSpan="3">category<i id="arrow-dropdown"></i></p></button>
@@ -164,9 +168,9 @@ class Search extends React.Component{
                                 <table id="drop">
                                     <tbody>
                                         <tr> 
-                                            <th>Collectibles and art</th> 
-                                            <th>Fashion</th>
-                                            <th>Sporting goods</th>
+                                            <th>Collectibles and art <i id="arrow" className="right"></i></th> 
+                                            <th>Fashion<i id="arrow" className="right"></i></th>
+                                            <th>Sporting goods<i id="arrow" className="right"></i></th>
                                         </tr>
                                         <tr> 
                                             <td>Collectibles</td>
@@ -189,9 +193,9 @@ class Search extends React.Component{
                                             <td>Golf</td>
                                         </tr>
                                         <tr>
-                                            <th rowSpan="1">Electronics</th>
-                                            <th rowSpan="1">Home & Garden</th>
-                                            <th rowSpan="1">Toys & Hobbies</th>
+                                            <th rowSpan="1">Electronics<i id="arrow" className="right"></i></th>
+                                            <th rowSpan="1">Home & Garden<i id="arrow" className="right"></i></th>
+                                            <th rowSpan="1">Toys & Hobbies<i id="arrow" className="right"></i></th>
                                         </tr>
                                         <tr>
                                             <td>Computers & tables</td>
@@ -220,7 +224,7 @@ class Search extends React.Component{
 
                 <input id="search" onChange={this.handleSelection} onKeyPress={this.handleKey} onClick={this.hideDropdown} value={this.state.input} list="item-names" className="Searchbar" type="text" placeholder="Search for anything" ></input>
                 <datalist id="item-names">
-                    <select size="5">
+                    <select>
                         {this.state.items.map((name, i) => {
                             return <option id="item" key={i} value={name}>{name}</option>
                         })}
@@ -239,10 +243,7 @@ class Search extends React.Component{
                  <button className="Search" onClick={this.handleSubmit}>Search</button>
                  <div className="showcontent">
                  </div>
-
-
                  {<Table2 />}
-                 
                 </div>
             </div>
                 

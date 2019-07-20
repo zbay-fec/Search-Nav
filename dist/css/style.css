@@ -402,7 +402,8 @@ datalist:focus {
 
 .w3-dropdown-content {
   border: 1px solid rgb(85, 85, 85);
-  bottom: -255px;
+  bottom: -284px;
+  left: 20px;
 }
 
 #right-top i {
@@ -428,12 +429,15 @@ footer.page-footer {
   width: 8%;
   position: relative;
   margin: -15px 0px;
+  cursor: pointer;
 }
 
-#drop th, #drop td {
-  padding: 2px 40px 2px 40px;
+
+#drop th {
+  padding: 3px 40px 2px 40px;
  
 }
+
 #drop td {
   padding-right: 8px;
   border-collapse: collapse;
@@ -444,12 +448,43 @@ footer.page-footer {
   font-size: 13px;
   color: #555;
   text-align: left;
+  padding: 10px 40px 2px 40px;
+  cursor: pointer;
+}
+
+#arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
+.up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
 }
 
 #drop th {
   font-weight: bold;
   font-size: 15px;
   color: #333;
+  text-align: left;
+  text-decoration: underline;
 }
 
 /* .w3-button {
