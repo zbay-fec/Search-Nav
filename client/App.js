@@ -56,10 +56,10 @@ class Search extends React.Component{
                     console.log("didnt worko");
                 }else{
                     target = suc;
+                    this.setState({ input: '' }); //will only clearn input if entered or searched, but wont clear if sleected fotm dropdown
                 }
             })
         }
-
 
         window.dispatchEvent(
             new CustomEvent('showCart',  {
@@ -74,7 +74,7 @@ class Search extends React.Component{
         Axios.post('http://ec2-18-212-65-184.compute-1.amazonaws.com:3001/find', { name: target }) //going to use the first arr in the autocorrection
         .then(response => {
             console.log(response.data[0].productID);
-            this.setState({ input: '' }); //reset to empty array after searching for the selected item
+            
             window.dispatchEvent(new CustomEvent('productChanged', {
                 detail: {
                   id: response.data[0].productID
@@ -92,6 +92,7 @@ class Search extends React.Component{
     }
 
     handleSelection(e){
+       
         this.setState({ input: e.target.value})
         if(this.state.items.includes(e.target.value)){
             // console.log(e.target.value);
@@ -101,10 +102,12 @@ class Search extends React.Component{
         }
     }
 
-    handleKey(e){
+
+    handleKey = (e) => {
         if(e.key === "Enter"){
             this.handleSubmit()
             e.value = "";
+
         }
     }
     
@@ -144,7 +147,7 @@ class Search extends React.Component{
                         <li className="Search-cart">
                             <a className="cart-icon" onClick={this.handleCart}>
                                 <i id="shop">
-                                    <p id="qty">{this.state.qty}</p>
+                                    {(this.state.qty !== 0) ? <p id="qty">{this.state.qty}</p>: null}
                                 </i>
                             </a>
                         </li>
@@ -215,11 +218,13 @@ class Search extends React.Component{
                         </div>
                 </div>
 
-                <input onChange={this.handleSelection} onKeyPress={this.handleKey} list="item-names" className="Searchbar" type="text" placeholder="Search for anything" ></input>
+                <input id="search" onChange={this.handleSelection} onKeyPress={this.handleKey} onClick={this.hideDropdown} value={this.state.input} list="item-names" className="Searchbar" type="text" placeholder="Search for anything" ></input>
                 <datalist id="item-names">
-                    {this.state.items.map((name, i) => {
-                        return <option id="item" key={i} value={name}>{name}</option>
-                    })}
+                    <select size="5">
+                        {this.state.items.map((name, i) => {
+                            return <option id="item" key={i} value={name}>{name}</option>
+                        })}
+                    </select>
                 </datalist>
                     <select className="dropdown"> 
                         <option value="All Categories">All Categories</option>

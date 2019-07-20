@@ -5,6 +5,14 @@
  *
  * Made By MaterializeCSS.com
  */
+ textarea:focus, input:focus{
+  outline: none;
+}
+select:focus {outline: 0;}
+datalist:focus {
+	display: none;
+}
+
 
  .top-bar {
   background-color: #fff;
@@ -499,9 +507,9 @@ footer.page-footer {
     transition-timing-function: linear;
     transition-delay: 0s;
 }
-.Searchbar::-webkit-calendar-picker-indicator {
+/* .Searchbar::-webkit-calendar-picker-indicator {
   display: none;
-}
+} */
 
 .dropdown {
   width: 10%;
@@ -529,7 +537,7 @@ footer.page-footer {
   background-color: transparent;
   border-radius: 3px;
   margin: 0 0 5px;
-  background-image: url('/arrow.png');
+  background-image: url('https://searchcomponent.s3.us-east-2.amazonaws.com/searchpngs/downArrow.png');
   background-repeat: no-repeat;
   border-collapse: collapse;
   border-spacing: 0;
