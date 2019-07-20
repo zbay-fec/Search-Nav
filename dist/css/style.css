@@ -129,6 +129,11 @@ datalist:focus {
   font-size: 12px;
   height: 20px;
 }
+
+#deals {
+  cursor: pointer;
+}
+
 .span-help {
   vertical-align: center;
   text-align: center;
@@ -280,6 +285,7 @@ datalist:focus {
   width: 23px;
   fill: #555;
 }
+
 #qty {
   position: absolute;
   right: 30px;
@@ -637,6 +643,7 @@ footer.page-footer {
   left: 3px; 
   cursor: pointer;
 }
+
 a {
   cursor: pointer;
 }

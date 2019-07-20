@@ -20,6 +20,7 @@ class Search extends React.Component{
         this.handleSelection = this.handleSelection.bind(this);
         this.handleKey = this.handleKey.bind(this);
         this.randomItem = this.randomItem.bind(this);
+        this.handleKillerDeals = this.handleKillerDeals.bind(this);
     }
 
     handleCart(e){
@@ -61,6 +62,7 @@ class Search extends React.Component{
                 }
             })
         }
+
 
         window.dispatchEvent(
             new CustomEvent('showCart',  {
@@ -108,12 +110,18 @@ class Search extends React.Component{
         }
     }
 
+    handleKillerDeals(){
+        const killerDeals = "Rudolph The Red Nose Reindeer Light Up Christmas Santa Hat Cap Holiday New"
+        this.handleSubmit(killerDeals, true);
+    }
+
     randomItem(){
         const randomPos = parseInt(Math.random() * 100);
         const randomItem = this.state.items[randomPos];
        
         this.handleSubmit(randomItem, true); //true will mean that in handle submit it wont try to take the input, and instead, take the random item from click
     }
+
     
     render(){
         return(
@@ -133,7 +141,7 @@ class Search extends React.Component{
                             <span className="span-help">Help & Contact</span>
                         </li>
                         <li className="deals">
-                            <img id="deals" src="https://ir.ebaystatic.com/cr/v/c1/61203_071519__GG_SM_HRZ_RW29_GenericPrimeMsg_Doodle_150x30_R1.gif"></img>
+                            <img id="deals" src="https://ir.ebaystatic.com/cr/v/c1/61203_071519__GG_SM_HRZ_RW29_GenericPrimeMsg_Doodle_150x30_R1.gif" onClick={this.handleKillerDeals}></img>
                         </li>
                     </ul>
                     <ul id="right-top">
@@ -151,7 +159,7 @@ class Search extends React.Component{
                         <li className="Search-cart">
                             <a className="cart-icon" onClick={this.handleCart}>
                                 <i id="shop">
-                                    {(this.state.qty !== 0) ? <p id="qty">{this.state.qty}</p>: null}
+                                    {(this.state.qty !== 0) ? <p id="qty" title="your cart has">{this.state.qty}</p>: null}
                                 </i>
                             </a>
                         </li>
