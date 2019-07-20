@@ -2,6 +2,7 @@ import React from 'react';
 import Axios from 'axios';
 import Table2 from './table2';
 import FuzzySearch from 'fuzzy-search';
+import { ActionYoutubeSearchedFor } from 'material-ui/svg-icons';
 
 
 //when you enter instead of clicking on an  Autofilling from the drop down menu
@@ -155,7 +156,7 @@ class Search extends React.Component{
                     <img id="Search-Zbay-logo"src="https://searchcomponent.s3.us-east-2.amazonaws.com/searchpngs/Zbay.png"></img>
                    
                 <div className="w3-dropdown-hover">
-                    <button className="category-dropdown" aria-expanded="false">Shop by <p rowSpan="2">category<i id="arrow-dropdown"></i></p></button>
+                    <button className="category-dropdown" aria-expanded="false">Shop by <p rowSpan="3">category<i id="arrow-dropdown"></i></p></button>
                         <div className="w3-dropdown-content">
                                 <table id="drop">
                                     <tbody>
@@ -166,16 +167,48 @@ class Search extends React.Component{
                                         </tr>
                                         <tr> 
                                             <td>Collectibles</td>
+                                            <td>Women</td>
+                                            <td>Outdoor sports</td>
                                         </tr>
                                         <tr>
                                             <td>Coins & paper money Antiques</td>
+                                            <td>Men</td>
+                                            <td>Team sports</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Antiques</td>
+                                            <td>Watches</td>
+                                            <td>Exercise & fitness</td>
                                         </tr>
                                         <tr>
                                             <td>Sports memorabillia</td>
+                                            <td>Shoes</td>
+                                            <td>Golf</td>
                                         </tr>
                                         <tr>
-                                        <th rowSpan="2">Electronics</th>
-                                        <th rowSpan="2">Home & Garden</th>
+                                            <th rowSpan="1">Electronics</th>
+                                            <th rowSpan="1">Home & Garden</th>
+                                            <th rowSpan="1">Toys & Hobbies</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Computers & tables</td>
+                                            <td>Yard, garden & outdoor</td>
+                                            <td>Vintage & anitques toys</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Cameras & photos</td>
+                                            <td>Crafts</td>
+                                            <td>Kids toys</td>
+                                        </tr>
+                                        <tr>
+                                            <td>TV, audio & surveillance</td>
+                                            <td>Home improvement</td>
+                                            <td>Action figures</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Cell phones & accessories</td>
+                                            <td>Pet supplies</td>
+                                            <td>Dolls & bears</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -195,8 +228,8 @@ class Search extends React.Component{
                         <option value="Baby">Baby</option>
                         <option value="Books">Books</option>
                         <option value="Business & Industrial">Business & Industrial</option>
-                        <option value="test">test</option>
-                        <option value="test">test</option>
+                        <option value="Cameras & photos">Cameras & photos</option>
+                        <option value="Cell phone & accessories">Cell phone & accessories</option>
                     </select>
                  <button className="Search" onClick={this.handleSubmit}>Search</button>
                  <div className="showcontent">
