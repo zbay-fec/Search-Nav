@@ -2,7 +2,6 @@ import React from 'react';
 import Axios from 'axios';
 import Table2 from './table2';
 import FuzzySearch from 'fuzzy-search';
-import { ActionYoutubeSearchedFor } from 'material-ui/svg-icons';
 
 
 //when you enter instead of clicking on an  Autofilling from the drop down menu
@@ -62,7 +61,6 @@ class Search extends React.Component{
                 }
             })
         }
-
 
         window.dispatchEvent(
             new CustomEvent('showCart',  {

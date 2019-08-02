@@ -5,6 +5,7 @@ const parser = require('body-parser');
 const compression = require("compression");
 const app = express();
 const port = process.env.PORT || 3001;
+const overwatch = require('overwatch-api'); //testing for mobile app
 
 app.use(express.static("dist"));
 app.use(express.json());
@@ -37,6 +38,23 @@ app.post('/find', (req, res) => {
         if(err) console.log('ERRRRR', err);
         res.send(results);
     })
+})
+
+//app api call test s
+app.get('/overwatch', (req, res) => {
+    console.log(req.body);
+    const platform = req.body.platform;
+    const region = req.body.region;
+    const tag = req.body.username;
+    
+    overwatch.getProfile(platform, region, tag, (err, results) => {
+        if (err) console.error(err);
+        else {
+            console.log(results);
+            res.send(results);
+        }
+    });
+
 })
 
 
