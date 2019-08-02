@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(parser.json({ strict: false }));
 app.use(cors());
 app.use(compression());
-
+app.use(parser());
 
 app.get('/items', (req, res) => {
     //then query on change of the input box
@@ -41,7 +41,7 @@ app.post('/find', (req, res) => {
 })
 
 //app api call test s
-app.get('/overwatch', (req, res) => {
+app.post('/overwatch', (req, res) => {
     console.log(req.body);
     const platform = req.body.platform;
     const region = req.body.region;
